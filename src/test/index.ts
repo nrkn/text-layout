@@ -1,7 +1,8 @@
 import { GlobalFonts, createCanvas } from '@napi-rs/canvas'
 
 import {
-  Block, DrawRun, MeasureRunAscent, MeasureRunWidth, MeasuredRun, TextRun
+  Block, DrawRun, Line, MeasureRunAscent, MeasureRunWidth, MeasuredRun, TextRun,
+  Word
 } from '../types.js'
 
 import { runsToWords } from '../words.js'
@@ -117,20 +118,34 @@ const start = async () => {
     ctx.fillText(run.text, x, y)
   }
 
-  //const draw = drawBlock(drawRun)
+  const drawRunFlushLeft: DrawRun = (run, x, y, word, line, block) => {
+    const isLeftmost = run === line.words[0].runs[0]
 
-  const drawRunFlushLeft = (block: Block) =>
-    (run: MeasuredRun, x: number, y: number) => {
-      const isLeftmostInSomeLine =
-        block.lines.some(l => l.words[0].runs[0] === run)
+    const left = isLeftmost ? getLeft(run) : 0
 
-      const left = isLeftmostInSomeLine ? getLeft(run) : 0
+    drawRun(run, x + left, y, word, line, block)
+  }
 
-      drawRun(run, x + left, y)
+  const drawRunCentered = (baseDraw: DrawRun): DrawRun =>
+    (run, x, y, word, line, block) => {
+      const dx = (block.maxWidth - line.width) / 2
+
+      baseDraw(run, x + dx, y, word, line, block)
     }
 
-  const drawFlushLeft = (block: Block) =>
-    drawBlock(drawRunFlushLeft(block) as DrawRun)
+  const draw = drawBlock(drawRunFlushLeft)
+  const drawCentered = drawBlock(drawRunCentered(drawRunFlushLeft))
+
+  // canvas helpers
+
+  const drawBg = () => {
+    ctx.fillStyle = 'white'
+    ctx.fillRect(0, 0, outWidth, outHeight)
+  
+    ctx.strokeStyle = 'cyan'
+    ctx.lineWidth = 1
+    ctx.strokeRect(eighthW, eighthH, inW, inH)  
+  }
 
   // words
 
@@ -164,12 +179,7 @@ const start = async () => {
 
   // draw background and bounds rect
 
-  ctx.fillStyle = 'white'
-  ctx.fillRect(0, 0, outWidth, outHeight)
-
-  ctx.strokeStyle = 'cyan'
-  ctx.lineWidth = 1
-  ctx.strokeRect(eighthW, eighthH, inW, inH)
+  drawBg()
 
   // draw text
 
@@ -183,8 +193,6 @@ const start = async () => {
     y += getAscent(block.lines[0])
   }
 
-  const draw = drawFlushLeft(block)
-
   draw(block, x, y)
 
   // save to file
@@ -193,6 +201,19 @@ const start = async () => {
   const outPath = `./data/test/output.png`
 
   await writeFile(outPath, png)
+
+  // again, centered
+
+  drawBg()
+
+  drawCentered(block, x, y )
+
+  // save to file
+
+  const pngCentered = canvas.toBuffer('image/png')
+  const outPathCentered = `./data/test/output-centered.png`
+
+  await writeFile(outPathCentered, pngCentered)
 }
 
 start().catch(console.error)

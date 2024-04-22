@@ -8,7 +8,7 @@ export const drawBlock = (drawRun: DrawRun) =>
     for (const line of block.lines) {
       for (const word of line.words) {
         for (const run of word.runs) {
-          drawRun(run, cx, cy)
+          drawRun(run, cx, cy, word, line, block)
           
           cx += run.advanceX
         }

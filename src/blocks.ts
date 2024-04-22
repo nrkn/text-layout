@@ -8,7 +8,8 @@ export const runsToBlock: RunWrapper = measureText =>
       const block: Block = {
         lines: [],
         width: 0,
-        height: 0
+        height: 0,
+        maxWidth
       }
 
       // handle hard breaks and split into words

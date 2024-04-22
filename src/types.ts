@@ -21,6 +21,10 @@ export type AdvanceX = {
   advanceX: number
 }
 
+export type MaxWidth = {
+  maxWidth: number
+}
+
 export type Size = Width & Height
 
 export type MeasureRunWidth = (run: TextRun) => number
@@ -47,10 +51,12 @@ export type Line = {
 // the width is the widest line, and the height is the sum of the lines
 export type Block = {
   lines: Line[]
-} & Size
+} & Size & MaxWidth
 
 export type RunWrapper = (measure: MeasureRunWidth) =>
   (width: number) =>
     (runs: TextRun[]) => Block
 
-export type DrawRun = ( run: TextRun, x: number, y: number ) => void
+export type DrawRun = ( 
+  run: MeasuredRun, x: number, y: number, word: Word, line: Line, block: Block
+) => void
