@@ -1,15 +1,18 @@
 import { GlobalFonts, createCanvas } from '@napi-rs/canvas'
 
 import {
-  Block, DrawRun, Line, MeasureRunAscent, MeasureRunWidth, MeasuredRun, TextRun,
-  Word
+  Block,
+  DrawRun, MeasureRunAscent, MeasureRunWidth, TextRun
 } from '../types.js'
 
 import { runsToWords } from '../words.js'
 import { lineAscent, runsToLines } from '../lines.js'
-import { runsToBlock } from '../blocks.js'
+import { scaleBlock } from '../scale.js'
 import { writeFile } from 'fs/promises'
-import { drawBlock } from '../draw.js'
+import { drawBlock, drawRunAligned } from '../draw.js'
+import { runScaler } from '../runs.js'
+import { shfitty } from './shfitty.js'
+import { hardWrapper, softWrapper } from '../wrap.js'
 
 const boldName = 'NotoBold'
 const italicName = 'NotoBoldItalic'
@@ -22,6 +25,8 @@ GlobalFonts.registerFromPath('./data/fonts/NotoSans-BoldItalic.ttf', italicName)
 const testText0 = `🐈Sphinx of black⚫ 💎quartz, judge👩‍⚖️ 🙂my vow💍.\n\n`
 const testText1 = `Amazingly😲 🤏few discotheques💃 🎁provide jukeboxes🎶.\n\n`
 const testText2 = `🎒Pack my🙂 📦box with five🕔 🕛dozen liquor🍸 🏺jugs.`
+
+const testText3 = `Amazingly😲🤏FewDiscotheques💃🎁ProvideJukeboxes🎶.`
 
 const emojiSplitRegex = /(\p{Emoji}+)|(\P{Emoji}+)/gu
 const emojiTestRegex = /\p{Emoji}/u
@@ -84,7 +89,13 @@ const textRuns2: TextRun[] = [
   }
 ]
 
+const textRuns3 = textWithEmojiToRuns(testText3)
+
 const sampleTextRuns = [...textRuns0, ...textRuns1, ...textRuns2]
+
+const sampleTextRunsWithLong = [
+  ...textRuns0, ...textRuns1, ...textRuns2, ...textRuns3
+]
 
 const start = async () => {
   // setup canvas
@@ -126,25 +137,22 @@ const start = async () => {
     drawRun(run, x + left, y, word, line, block)
   }
 
-  const drawRunCentered = (baseDraw: DrawRun): DrawRun =>
-    (run, x, y, word, line, block) => {
-      const dx = (block.maxWidth - line.width) / 2
+  const drawRunCentered = drawRunAligned(drawRun, 'center')
+  const drawRunRight = drawRunAligned(drawRun, 'right')
 
-      baseDraw(run, x + dx, y, word, line, block)
-    }
-
-  const draw = drawBlock(drawRunFlushLeft)
-  const drawCentered = drawBlock(drawRunCentered(drawRunFlushLeft))
+  const drawFlushLeft = drawBlock(drawRunFlushLeft)
+  const drawCentered = drawBlock(drawRunCentered)
+  const drawRight = drawBlock(drawRunRight)
 
   // canvas helpers
 
   const drawBg = () => {
     ctx.fillStyle = 'white'
     ctx.fillRect(0, 0, outWidth, outHeight)
-  
+
     ctx.strokeStyle = 'cyan'
     ctx.lineWidth = 1
-    ctx.strokeRect(eighthW, eighthH, inW, inH)  
+    ctx.strokeRect(eighthW, eighthH, inW, inH)
   }
 
   // words
@@ -170,12 +178,12 @@ const start = async () => {
 
   // block
 
-  const wrapper = runsToBlock(measure)(inW)
-
-  const block = wrapper(sampleTextRuns)
+  const hardWrap = hardWrapper(measure)
+  const hardBlock = hardWrap(sampleTextRuns)
+  const softBlock = softWrapper( inW )(hardBlock)
 
   console.log('wrapped')
-  logJsonBlock(block)
+  logJsonBlock(softBlock)
 
   // draw background and bounds rect
 
@@ -189,11 +197,11 @@ const start = async () => {
   // allow for the difference in ascent between the first line and the rest
   // so that the text is drawn *inside* the rectangle rather than with the 
   // top as the baseline
-  if (block.lines.length) {
-    y += getAscent(block.lines[0])
+  if (softBlock.lines.length) {
+    y += getAscent(softBlock.lines[0])
   }
 
-  draw(block, x, y)
+  drawFlushLeft(softBlock, x, y)
 
   // save to file
 
@@ -206,7 +214,7 @@ const start = async () => {
 
   drawBg()
 
-  drawCentered(block, x, y )
+  drawCentered(softBlock, x, y)
 
   // save to file
 
@@ -214,6 +222,111 @@ const start = async () => {
   const outPathCentered = `./data/test/output-centered.png`
 
   await writeFile(outPathCentered, pngCentered)
+
+  // again, right
+
+  drawBg()
+
+  drawRight(softBlock, x, y)
+
+  // save to file
+
+  const pngRight = canvas.toBuffer('image/png')
+  const outPathRight = `./data/test/output-right.png`
+
+  await writeFile(outPathRight, pngRight)
+
+  // what happens with wrapping when a really long word is present?
+
+  const wideHardBlock = hardWrap(sampleTextRunsWithLong)
+  const wideBlock = softWrapper(inW)(wideHardBlock)
+
+  // draw bg
+
+  drawBg()
+
+  // draw text
+
+  x = eighthW
+  y = eighthH
+
+  // allow for the difference in ascent between the first line and the rest
+  // so that the text is drawn *inside* the rectangle rather than with the
+  // top as the baseline
+
+  if (wideBlock.lines.length) {
+    y += getAscent(wideBlock.lines[0])
+  }
+
+  drawFlushLeft(wideBlock, x, y)
+
+  // save to file
+
+  const pngWide = canvas.toBuffer('image/png')
+  const outPathWide = `./data/test/output-wide.png`
+
+  await writeFile(outPathWide, pngWide)
+
+  // fitting
+
+  console.log('shfitty')
+
+  const shBlock = hardWrapper(measure)(sampleTextRuns)
+
+  const doShfitty = async (block: Block, suffix: string) => {
+    const shStartTime = process.hrtime.bigint()
+    const scales = shfitty(block, { width: inW, height: inH })
+    const shScaler = scaleBlock(scales.closeFitScale)
+    const shScaledBlock = shScaler(block)
+    const shBlock = softWrapper(inW)(shScaledBlock)
+    const shEndTime = process.hrtime.bigint()
+
+    console.log(`shfitty ${suffix} took (ms):`, Number(shEndTime - shStartTime) / 1e6)
+
+    console.log(scales)
+
+
+    // draw background and bounds rect
+    drawBg()
+
+    // draw text
+    x = eighthW
+    y = eighthH
+
+    // allow for the difference in ascent between the first line and the rest
+    // so that the text is drawn *inside* the rectangle rather than with the
+    // top as the baseline
+    if (shBlock.lines.length) {
+      y += getAscent(shBlock.lines[0])
+    }
+
+    drawFlushLeft(shBlock, x, y)
+
+    // save to file
+
+    const pngSh = canvas.toBuffer('image/png')
+    const outPathSh = `./data/test/output-${suffix}.png`
+
+    await writeFile(outPathSh, pngSh)
+  }
+
+  const doubleScaler = scaleBlock(2)
+  const halfScaler = scaleBlock(0.5)
+  const tenXScaler = scaleBlock(10)
+  const tenthScaler = scaleBlock(0.1)
+
+  const doubledBlock = doubleScaler(shBlock)
+  const halvedBlock = halfScaler(shBlock)
+  const tenXBlock = tenXScaler(shBlock)
+  const tenthBlock = tenthScaler(shBlock)
+
+  // all now produce good results! looks like the shfitty variant of our fitting
+  // attempts is the one to use
+  await doShfitty(shBlock, 'sh1x')
+  await doShfitty(doubledBlock, 'sh2x')
+  await doShfitty(tenXBlock, 'sh10x')
+  await doShfitty(tenthBlock, 'sh0_1x')
+  await doShfitty(halvedBlock, 'sh0_5x')
 }
 
 start().catch(console.error)

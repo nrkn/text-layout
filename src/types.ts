@@ -33,6 +33,8 @@ export type MeasureRunAscent = (run: TextRun) => number
 
 export type MeasuredRun = TextRun & Size & AdvanceX
 
+export type Align = 'left' | 'center' | 'right'
+
 // a word is a group of runs that should stay together, allowing styling of 
 // individual parts of a word, eg initial letter bold, or a word mixing fonts
 // etc
@@ -51,12 +53,17 @@ export type Line = {
 // the width is the widest line, and the height is the sum of the lines
 export type Block = {
   lines: Line[]
-} & Size & MaxWidth
+} & Size
 
-export type RunWrapper = (measure: MeasureRunWidth) =>
-  (width: number) =>
-    (runs: TextRun[]) => Block
+export type WrappedBlock = Block & MaxWidth
 
-export type DrawRun = ( 
-  run: MeasuredRun, x: number, y: number, word: Word, line: Line, block: Block
+export type SoftWrapper = (maxWidth: number) =>
+  (block: Block) => WrappedBlock
+
+export type HardWrapper = (measure: MeasureRunWidth) =>
+  (runs: TextRun[]) => Block
+
+export type DrawRun = (
+  run: MeasuredRun, x: number, y: number,
+  word: Word, line: Line, block: WrappedBlock
 ) => void

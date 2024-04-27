@@ -1,7 +1,7 @@
-import { Block, DrawRun } from './types.js'
+import { Align, DrawRun, WrappedBlock } from './types.js'
 
 export const drawBlock = (drawRun: DrawRun) =>
-  (block: Block, x = 0, y = 0) => {
+  (block: WrappedBlock, x = 0, y = 0) => {
     let cx = x
     let cy = y
 
@@ -9,7 +9,7 @@ export const drawBlock = (drawRun: DrawRun) =>
       for (const word of line.words) {
         for (const run of word.runs) {
           drawRun(run, cx, cy, word, line, block)
-          
+
           cx += run.advanceX
         }
       }
@@ -17,4 +17,12 @@ export const drawBlock = (drawRun: DrawRun) =>
       cx = x
       cy += line.height
     }
+  }
+
+export const drawRunAligned = (baseDrawRun: DrawRun, align: Align): DrawRun =>
+  (run, x, y, word, line, block) => {
+    const dx = align === 'center' ? (block.maxWidth - line.width) / 2 :
+      align === 'right' ? block.maxWidth - line.width : 0
+
+    baseDrawRun(run, x + dx, y, word, line, block)
   }
