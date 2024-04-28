@@ -1,8 +1,33 @@
-# wrap
+# text-layout
 
-Wrap styled runs of text at a given width
+Wrap styled runs of text at a given width, or fit them to a given size
 
 ## todo
+
+### license
+
+Add font licenses for Google fonts used in integration testing
+
+### generating runs
+
+Consider filtering out empty runs eg text: '', width: 0 etc - having them
+there is slightly faster to produce the runs initially but may slow down 
+processing slightly
+
+### types
+
+Consider using the T extends U pattern, so users can eg decorate their types 
+with additional data which is retained when objects are decorated/extended by
+our module - maybe not necessary and would be less performant
+
+### draw
+
+drawRunAligned should probably be drawLineAligned, makes more sense to do the
+whole line at once as only lines are affected by alignment
+
+In that vein, we should probably have a draw for each type, run, word, line etc
+
+### fit
 
 We now have a working fit algo, in shfitty.ts
 
@@ -21,6 +46,16 @@ We can start with an initial scale that's closer to the correct one which
 will reduce the number of iterations needed to find the correct scale, by eg
 setting it to the ratio of the areas of the existing text and the target size
 
+Also, consider doing what we did with scaling and intend to do with drawing -
+make a fit for runs, words, lines etc - enables eg that effect where each line 
+is scaled indepently to fit the same width to produce a block of text, often
+seen on posters, book covers etc
+
+Some other fit libs also have an option
+to ignore height and only scale for width, consider this too
+
+### blocks etc
+
 Also consider options for the following:
 
 Adjusting the Line width if actualBoundingBoxLeft and actualBoundingBoxRight are 
@@ -33,9 +68,37 @@ and last Line in a Block
 If those metrics are available, consider having an offsetX and offsetY on a 
 Block to reflect this, eg so you can draw text flush inside a rectangle
 
+### tests
+
 Once these are done, expand the test suite to cover more cases
 
-Once that is done, expand the documentation and publish the module to NPM
+We should probably have unit test for some of the code, but as it's graphical
+in nature integration tests like we currently use are probably more useful
+overall
+
+We could actually run eg a headless browser, convert the runs to styled spans,
+and compare how it wraps etc - but all text layout engines have minor 
+differences so it may be difficult and doesn't prove much
+
+#### test edge cases
+
+Very small or very large text. Very short or very long words. Small amounts or
+large amounts of text. Fitting to very small or very large bounds/width etc.
+
+### documentation
+
+Expand the documentation 
+
+Consider a note that you can use a font module like eg opentype to measure the
+metrics without using eg a canvas getMetrics implementation
+
+### examples
+
+Add examples for both node (via @napi-rs/canvas) and browser (via canvas)
+
+### Finalize
+
+Publish the module to NPM
 
 ## Refactoring results
 
@@ -95,3 +158,5 @@ shfitty sh0_1x took (ms): 2.1905
 shfitty sh0_5x took (ms): 1.93
 { closeFitScale: 2.2216796875 }
 ```
+
+Good result, over 10x speedup!

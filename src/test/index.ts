@@ -7,10 +7,9 @@ import {
 
 import { runsToWords } from '../words.js'
 import { lineAscent, runsToLines } from '../lines.js'
-import { scaleBlock } from '../scale.js'
+import { blockScaler } from '../scale.js'
 import { writeFile } from 'fs/promises'
 import { drawBlock, drawRunAligned } from '../draw.js'
-import { runScaler } from '../runs.js'
 import { shfitty } from './shfitty.js'
 import { hardWrapper, softWrapper } from '../wrap.js'
 
@@ -276,7 +275,7 @@ const start = async () => {
   const doShfitty = async (block: Block, suffix: string) => {
     const shStartTime = process.hrtime.bigint()
     const scales = shfitty(block, { width: inW, height: inH })
-    const shScaler = scaleBlock(scales.closeFitScale)
+    const shScaler = blockScaler(scales.closeFitScale)
     const shScaledBlock = shScaler(block)
     const shBlock = softWrapper(inW)(shScaledBlock)
     const shEndTime = process.hrtime.bigint()
@@ -310,10 +309,10 @@ const start = async () => {
     await writeFile(outPathSh, pngSh)
   }
 
-  const doubleScaler = scaleBlock(2)
-  const halfScaler = scaleBlock(0.5)
-  const tenXScaler = scaleBlock(10)
-  const tenthScaler = scaleBlock(0.1)
+  const doubleScaler = blockScaler(2)
+  const halfScaler = blockScaler(0.5)
+  const tenXScaler = blockScaler(10)
+  const tenthScaler = blockScaler(0.1)
 
   const doubledBlock = doubleScaler(shBlock)
   const halvedBlock = halfScaler(shBlock)

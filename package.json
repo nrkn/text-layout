@@ -1,7 +1,7 @@
 {
-  "name": "@nrkn/wrap",
+  "name": "@nrkn/text-layout",
   "version": "0.0.1",
-  "description": "Wrap styled runs of text at a given width",
+  "description": "Wrapping and fitting styled runs of text",
   "main": "./dist/index.js",
   "scripts": {
     "build": "rimraf dist && tsc"

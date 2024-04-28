@@ -1,19 +1,23 @@
-import { scaleBlock } from '../scale.js'
+import { blockScaler } from '../scale.js'
 import { Block, Size } from '../types.js'
 import { softWrapper } from '../wrap.js'
 
 type Fit = 'CLOSE_FIT' | 'UNDERSIZED' | 'OVERSIZED'
 
+// are we likely to use the same bounds on different blocks? yes I think we are
+// so probably should be a higher order function here where 
+// bounds => block => scale
 export const shfitty = (block: Block, bounds: Size) => {
   const wrap = softWrapper(bounds.width)
 
+  // consider making the tolerance (here, 1) an option
   const closeToBounds = {
     width: bounds.width - 1,
     height: bounds.height - 1
   }
 
   const getFit = (scale: number): Fit => {
-    const scaler = scaleBlock(scale)
+    const scaler = blockScaler(scale)
     const scaledBlock = scaler(block)
     const wrappedBlock = wrap(scaledBlock)
 
@@ -41,7 +45,9 @@ export const shfitty = (block: Block, bounds: Size) => {
   if (fit === 'CLOSE_FIT') {
     return { closeFitScale: scale }
   }
-
+  
+  // experiment to see if using factors other than 2/0.5 are faster overall
+  // also experiment to see if this is necessary at all (I think it is...)
   if (fit === 'UNDERSIZED') {
     lowerBound = scale
     do {
@@ -58,11 +64,10 @@ export const shfitty = (block: Block, bounds: Size) => {
     lowerBound = scale
   }
 
-  console.log({ lowerBound, upperBound })
-
   let midScale = (lowerBound + upperBound) / 2
   let midFit = getFit(midScale)
 
+  // perhaps make this an option
   const maxIterations = 1e4
   let iterations = 0
 
@@ -82,8 +87,6 @@ export const shfitty = (block: Block, bounds: Size) => {
       throw Error('shfitty failed to find a fit')
     }
   }
-
-  console.log({ iterations })
 
   return { closeFitScale: midScale }
 }
