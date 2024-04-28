@@ -4,6 +4,12 @@ Wrap styled runs of text at a given width, or fit them to a given size
 
 ## todo
 
+### motivation etc
+
+Explain that this was designed for my own use cases, so doesn't cover all
+aspects of text layout, explain what it does and does not do, with a note that 
+I'm happy to consider adding other use cases and/or accepting PRs to do so
+
 ### license
 
 Add font licenses for Google fonts used in integration testing

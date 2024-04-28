@@ -5,3 +5,4 @@ export * from './scale.js'
 export * from './types.js'
 export * from './words.js'
 export * from './wrap.js'
+// todo - fit once it's been moved from ./src/test to ./src
