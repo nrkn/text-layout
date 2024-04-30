@@ -1,6 +1,6 @@
 {
   "name": "@nrkn/text-layout",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Wrapping and fitting styled runs of text",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

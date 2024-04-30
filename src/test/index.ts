@@ -41,11 +41,11 @@ const textSize = 80
 const outWidth = textSize * 24
 const outHeight = textSize * 16
 
-const eighthW = outWidth / 8
-const eighthH = outHeight / 8
+let xOff = outWidth / 8
+let yOff = outHeight / 8
 
-const inW = eighthW * 6
-const inH = eighthH * 6
+let textW = xOff * 6
+let textH = yOff * 6
 
 const textColor = '#0e1f41'
 const emojiColor = '#b7410e'
@@ -187,7 +187,7 @@ const start = async (generateOutput = false) => {
 
     ctx.strokeStyle = 'cyan'
     ctx.lineWidth = 1
-    ctx.strokeRect(eighthW, eighthH, inW, inH)
+    ctx.strokeRect(xOff, yOff, textW, textH)
   }
 
   //
@@ -223,8 +223,8 @@ const start = async (generateOutput = false) => {
 
     // draw text
 
-    let x = eighthW
-    let y = eighthH
+    let x = xOff
+    let y = yOff
 
     // allow for the difference in ascent between the first line and the rest
     // so that the text is drawn *inside* the rectangle rather than with the 
@@ -294,12 +294,6 @@ const start = async (generateOutput = false) => {
     // right
     ctx.strokeStyle = 'pink'
     drawLine(x + width, fbaY, x + width, fbdY)
-
-    const calcFontHeight = run.fontSize * run.lineHeight
-    const fontHeight = fontBoundingBoxAscent + fontBoundingBoxDescent
-    const boundsHeight = actualBoundingBoxAscent + actualBoundingBoxDescent
-
-    console.log({ text: run.text, calcFontHeight, fontHeight, boundsHeight })
   }
 
   // runs
@@ -329,7 +323,7 @@ const start = async (generateOutput = false) => {
 
   const hardWrap = hardWrapper(measure)
   const hardBlock = hardWrap(sampleTextRuns)
-  const softBlock = softWrapper(inW)(hardBlock)
+  const softBlock = softWrapper(textW)(hardBlock)
 
   log('wrapped')
   logJsonBlock(softBlock)
@@ -347,14 +341,14 @@ const start = async (generateOutput = false) => {
   // what happens with wrapping when a really long word is present?
 
   const wideHardBlock = hardWrap(sampleTextRunsWithLong)
-  const wideBlock = softWrapper(inW)(wideHardBlock)
+  const wideBlock = softWrapper(textW)(wideHardBlock)
 
   await drawHelper(wideBlock, 'output-wide')
 
   // solid text
 
   const solidHardBlock = hardWrap(solidRuns0)
-  const solidFit = solidFitter(inW)
+  const solidFit = solidFitter(textW)
   const solidBlock = solidFit(solidHardBlock)
 
   await drawHelper(solidBlock, 'output-solid')
@@ -368,7 +362,7 @@ const start = async (generateOutput = false) => {
 
   // now contain it so doesn't exceed height  
 
-  const containedBlock1 = containFit({ width: inW, height: inH })(solidBlock1)
+  const containedBlock1 = containFit({ width: textW, height: textH })(solidBlock1)
 
   await drawHelper(containedBlock1, 'output-solid1-contained', drawCentered)
 
@@ -390,7 +384,7 @@ const start = async (generateOutput = false) => {
     options: Partial<FitterOptions> = {},
     draw = drawFlushLeft
   ) => {
-    const fit = fitter({ width: inW, height: inH }, options)
+    const fit = fitter({ width: textW, height: textH }, options)
 
     const shStartTime = process.hrtime.bigint()
     const shResult = fit(block)
@@ -501,6 +495,66 @@ const start = async (generateOutput = false) => {
   await doFit(tenXFitWideBlock, 'wide-word_sh10x')
   await doFit(tenthFitWideBlock, 'wide-word_sh0_1x')
   await doFit(halvedFitWideBlock, 'wide-word_sh0_5x')
+
+  // fit that is known to fail, eg a close fit not possible
+
+  const noCloseRuns: TextRun[] = [
+    {
+      text: "Sphinx of black quartz, judge my vow.\n\nThe quick brown fox jumps over the lazy dog.",
+      fontFamily: "NotoBold",
+      fontSize: 80,
+      lineHeight: 1.2,
+      color: "#b7410e"
+    }
+  ]
+
+  const hardNoCloseBlock = hardWrapper(measure)(noCloseRuns)
+
+  const noCloseFitSize = { width: 800, height: 600 }
+
+  const doNoCloseFit = async (
+    block: Block, suffix: string,
+    options: Partial<FitterOptions> = {},
+    draw = drawFlushLeft
+  ) => {
+    const fit = fitter(noCloseFitSize, options)
+
+    const shStartTime = process.hrtime.bigint()
+    const shResult = fit(block)
+    const shEndTime = process.hrtime.bigint()
+
+    const { strategy, scale, iterations, foundDuring, wrapped } = shResult
+
+    const ms = Number(shEndTime - shStartTime) / 1e6
+
+    totalMs += ms
+    runs++
+
+    log(
+      `fit ${suffix} took (ms):`, ms,
+      { strategy, scale, iterations, foundDuring }
+    )
+
+    const oXOff = xOff
+    const oYOff = yOff
+
+    const oTextW = textW
+    const oTextH = textH
+
+    xOff = 0
+    yOff = 0
+    textW = noCloseFitSize.width
+    textH = noCloseFitSize.height
+
+    await drawHelper(wrapped, `output-${suffix}`, draw)
+
+    xOff = oXOff
+    yOff = oYOff
+    textW = oTextW
+    textH = oTextH
+  }
+
+  await doNoCloseFit(hardNoCloseBlock, 'no-fit')
 
   //
 

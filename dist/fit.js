@@ -9,7 +9,7 @@ const wrap_js_1 = require("./wrap.js");
 // unbreakable word can't be scaled up any further. Optionally, only shrink the
 // text to fit but don't grow if it already fits.
 const fitter = (bounds, options = {}) => {
-    const { tolerance, scaleStep, maxIterations, fitType, wrapper } = Object.assign((0, exports.defaultFitterOptions)(), options);
+    const { tolerance, scaleStep, maxIterations, minBoundsDelta, fitType, wrapper } = Object.assign((0, exports.defaultFitterOptions)(), options);
     assertOptions(tolerance, scaleStep);
     const wrap = wrapper(bounds.width);
     const closeW = bounds.width - tolerance;
@@ -24,11 +24,11 @@ const fitter = (bounds, options = {}) => {
         // height, or return why it failed
         const attemptFit = (scale, during) => {
             iterations++;
+            const scaledBlock = (0, scale_js_1.blockScaler)(scale)(block);
+            wrapped = wrap(scaledBlock);
             if (iterations > maxIterations) {
                 throw Error(`Exceeded max iterations (${maxIterations})`);
             }
-            const scaledBlock = (0, scale_js_1.blockScaler)(scale)(block);
-            wrapped = wrap(scaledBlock);
             const longestWord = (0, words_js_1.longestWordInBlock)(wrapped);
             // unbreakable word that exceeds bounds 
             if (longestWord.width > bounds.width) {
@@ -94,9 +94,9 @@ const fitter = (bounds, options = {}) => {
             lowerBound = scale;
             do {
                 scale *= scaleStep;
-                fit = attemptFit(scale, 'lower bound search');
+                fit = attemptFit(scale, 'upper bound search');
             } while (fit !== exports.fitnessOver);
-            // found it while searching for the lower bound
+            // found it while searching for the upper bound
             if (isFitResult(fit))
                 return fit;
             upperBound = scale;
@@ -105,9 +105,9 @@ const fitter = (bounds, options = {}) => {
             upperBound = scale;
             do {
                 scale /= scaleStep;
-                fit = attemptFit(scale, 'upper bound search');
+                fit = attemptFit(scale, 'lower bound search');
             } while (fit !== exports.fitnessUnder);
-            // found it while searching for the upper bound
+            // found it while searching for the lower bound
             if (isFitResult(fit))
                 return fit;
             lowerBound = scale;
@@ -123,8 +123,22 @@ const fitter = (bounds, options = {}) => {
         while (true) {
             if (midFit === exports.fitnessUnder) {
                 lowerBound = midScale;
+                const boundsDelta = upperBound - lowerBound;
+                // ok - need to handle the case where the delta between upper and lower 
+                // is really small, it means that no close fit is possible - better for 
+                // it to be under
+                if (boundsDelta < minBoundsDelta) {
+                    return {
+                        wrapped: wrapped,
+                        bounds: { width: bounds.width, height: bounds.height },
+                        strategy: 'no close fit',
+                        scale,
+                        iterations,
+                        foundDuring: 'lower/upper delta check'
+                    };
+                }
             }
-            else {
+            else if (midFit === exports.fitnessOver) {
                 upperBound = midScale;
             }
             midScale = (lowerBound + upperBound) / 2;
@@ -140,10 +154,11 @@ exports.fitter = fitter;
 exports.fitnessOver = 'over';
 exports.fitnessUnder = 'under';
 const defaultFitterOptions = () => ({
-    tolerance: 1,
+    tolerance: 5,
     scaleStep: 2,
     maxIterations: 100,
     fitType: 'fit',
+    minBoundsDelta: 1e-9,
     // you can override the soft wrapper
     // the idea being that we can provide a new wrapper later
     // that makes better use of font metrics

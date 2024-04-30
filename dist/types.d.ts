@@ -54,11 +54,12 @@ export type FitterOptions = {
     tolerance: number;
     scaleStep: number;
     maxIterations: number;
+    minBoundsDelta: number;
     fitType: FitType;
     wrapper: SoftWrapper;
 };
-export type FitStrategy = 'widest word' | 'height' | 'shrink';
-export type FitFoundDuring = ('initial' | 'estimate' | 'lower bound search' | 'upper bound search' | 'mid scale' | 'binary search');
+export type FitStrategy = 'widest word' | 'height' | 'shrink' | 'no close fit';
+export type FitFoundDuring = ('initial' | 'estimate' | 'lower bound search' | 'upper bound search' | 'mid scale' | 'binary search' | 'lower/upper delta check');
 export type FitResult = {
     wrapped: WrappedBlock;
     bounds: Size;
