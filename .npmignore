@@ -1,0 +1,4 @@
+data/fonts/**
+data/test/**
+src/test/**
+dist/test/**

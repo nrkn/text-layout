@@ -185,7 +185,7 @@ so that the soft wrapper can take them into account
 
 This is particularly important if you need all the text to fit *inside* a 
 rectangle with no sticky outy bits, eg by design, italic fonts often fall 
-outside the bounds, emoji fonts oftern go above the top bound, etc
+outside the bounds, emoji fonts often go above the top bound, etc
 
 ### tests
 
