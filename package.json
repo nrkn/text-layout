@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Wrapping and fitting styled runs of text",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "npm run build && node ./dist/test"
@@ -15,8 +16,16 @@
   ],
   "author": "Nik Coughlin <nrkn.com@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrkn/text-layout.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nrkn/text-layout/issues"
+  },
+  "homepage": "https://github.com/nrkn/text-layout#readme",
   "devDependencies": {
     "@napi-rs/canvas": "^0.1.52",
     "@types/node": "^20.12.7"
-  }
+  }    
 }
