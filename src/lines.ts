@@ -2,6 +2,7 @@ import { splitRunsIntoLines } from './runs.js'
 import { Line, MeasureRunAscent, MeasureRunWidth, TextRun } from './types.js'
 import { runsToWords } from './words.js'
 
+// generates hard wrapped lines from runs
 export const runsToLines = (measureText: MeasureRunWidth) => {
   const rtw = runsToWords(measureText)
 
@@ -34,6 +35,7 @@ export const runsToLines = (measureText: MeasureRunWidth) => {
   return rtl
 }
 
+// find the maximum ascent of the words in a line
 export const lineAscent = (measureAscent: MeasureRunAscent) =>
   (line: Line) => {
     let maxAscent = 0

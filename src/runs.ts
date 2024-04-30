@@ -83,6 +83,7 @@ export const groupWords = (wordRuns: TextRun[]): TextRun[][] => {
 
   for (let i = 0; i < wordRuns.length; i++) {
     const run = wordRuns[i]
+
     currentGroup.push(run)
 
     // Check if the current run has a trailing space or if it's the last run

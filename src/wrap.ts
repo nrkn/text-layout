@@ -1,6 +1,7 @@
 import { runsToLines } from './lines.js'
 import { Block, HardWrapper, Line, SoftWrapper, WrappedBlock } from './types.js'
 
+// wrap runs into a block using hard coded breaks eg \n within the text runs
 export const hardWrapper: HardWrapper = measureText =>
   runs => {
     const block: Block = {
@@ -15,6 +16,8 @@ export const hardWrapper: HardWrapper = measureText =>
     return block
   }
 
+// takes a hard wrapped block and soft wraps within the lines to fit a given
+// width
 export const softWrapper: SoftWrapper = maxWidth =>
   block => {
     const wrapped: WrappedBlock = {
@@ -77,11 +80,11 @@ export const softWrapper: SoftWrapper = maxWidth =>
 
     for (const line of block.lines) {
       // if the line already fits, don't soft wrap it
-      if( line.width <= maxWidth ){
+      if (line.width <= maxWidth) {
         wrapped.lines.push(line)
         wrapped.width = Math.max(wrapped.width, line.width)
         wrapped.height += line.height
-        
+
         continue
       }
 

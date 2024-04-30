@@ -1,5 +1,6 @@
 import { Block, Line, MeasuredRun, Word } from './types.js'
 
+// scale a block by a factor
 export const blockScaler = (scale: number) =>
   (block: Block) => {
     const scaleLines = lineScaler(scale)
@@ -13,6 +14,7 @@ export const blockScaler = (scale: number) =>
     return scaled
   }
 
+// scale a measured run by a factor  
 export const measuredRunScaler = (scale: number) =>
   (run: MeasuredRun) => ({
     ...run,
@@ -22,6 +24,7 @@ export const measuredRunScaler = (scale: number) =>
     advanceX: run.advanceX * scale
   })
 
+// scale a word by a factor  
 export const wordScaler = (scale: number) =>
   (word: Word) => ({
     ...word,
@@ -31,6 +34,7 @@ export const wordScaler = (scale: number) =>
     runs: word.runs.map(measuredRunScaler(scale))
   })
 
+// scale a line by a factor  
 export const lineScaler = (scale: number) =>
   (line: Line) => ({
     ...line,

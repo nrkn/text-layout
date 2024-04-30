@@ -1,30 +1,165 @@
 # text-layout
 
-Wrap styled runs of text at a given width, or fit them to a given size
+Wrap styled runs of text to a given width
+
+Fit styled runs of text to a given size, eg scale the text uniformly and re-wrap 
+until it fits
+
+It uses a binary search and a best guess initial scale heuristic for fitting, so
+it's pretty fast
+
+Has some other fit strategies - contain and solid - to be documented
+
+Although functionally complete for my use case, there is still a lot to do to 
+make it palatable for others to use - see the todo section below
+
+It's dumb and has no external dependencies, eg it only knows how to wrap and fit 
+text, and not anything about fonts, you need to bring your own code to measure 
+text (you can use eg a canvas context and getMetrics, or even roll your own from 
+the font metrics using eg opentype or a similar font parser)
+
+It also has some helpers for doing things like drawing the layout, again you 
+need to provide a user defined bridge function to whatever drawing library you 
+are using
+
+## example output
+
+Wrapped, fitted, centered:
+
+![wrapped, fitted, centered](./data/docs/wrapped-fitted-centered.png)
+
+## install
+
+`npm install @nrkn/text-layout`
+
+## example
+
+With a browser canvas (or node library with compatible API)
+
+```ts
+import { 
+  DrawRun, MeasureRunWidth, TextRun, drawBlock, fitter, hardWrapper, softWrapper 
+} from '@nrkn/text-layout'
+
+// omitted, set up canvas, get context, ensure fonts loaded etc
+
+// byo functions
+const runToCssFontString = (run: TextRun) =>
+  `${run.fontSize}px ${run.fontFamily}`
+
+const measure: MeasureRunWidth = run => {
+  ctx.font = runToCssFontString(run)
+
+  return ctx.measureText(run.text).width
+}
+
+const drawRun: DrawRun = (run, x, y) => {
+  ctx.font = runToCssFontString(run)
+  ctx.fillStyle = run.color || 'black'
+  ctx.fillText(run.text, x, y)
+}
+
+// create some runs
+const runs: TextRun[] = [  
+  {
+    text: "🐈",
+    fontFamily: "NotoEmoji",
+    fontSize: 80,
+    lineHeight: 1.2,
+    color: "#b7410e"
+  },
+  {
+    text: "Sphinx of black",
+    fontFamily: "NotoBold",
+    fontSize: 80,
+    lineHeight: 1.2,
+    color: "#0e1f41"
+  },
+  // etc
+]
+
+const wrapHard = hardWrapper( measure )
+
+// generate a layout respecting any newlines in the runs provided
+const hardWrapped = wrapHard( runs )
+
+// wrap at eg 800 pixels
+const wrapSoft = softWrapper( 800 )
+
+const softWrapped = wrapSoft( hardWrapped )
+
+const blockDraw = drawBlock( drawRun )
+
+// draw the layout at x: 50, y: 50
+blockDraw( softWrapped, 50, 50 )
+
+// or fit the layout to a given size
+const fitBlock = fitter({ width: 800, height: 600 })
+
+const fitResult = fitBlock( hardWrapped )
+
+// draw the layout at x: 50, y: 50
+
+blockDraw( fitResult.wrapped, 50, 50 )
+```
+
+Note that it draws the layout so that the baseline of the first line sits on y,
+like HTML canvas does by default
+
+You can measure the ascent and offset it to start drawing *below* y like so:
+
+```ts
+import { 
+  MeasureRunAscent, lineAscent
+} from '@nrkn/text-layout'
+
+// omit generating a block etc, see example above
+
+const measureAscent: MeasureRunAscent = run => {
+  ctx.font = runToCssFontString(run)
+
+  return ctx.measureText(run.text).actualBoundingBoxAscent
+}
+
+const getAscent = lineAscent(measureAscent)
+
+let x = 50
+let y = 50
+
+// allow for the difference in ascent between the first line and the rest so 
+// that the text is drawn *below* the given y, rather than using y as 
+// the baseline
+if (block.lines.length) {
+  y += getAscent(block.lines[0])
+}
+
+// now draw as before
+```
 
 ## todo
 
-### motivation etc
+### add a section about motivation etc
+
+Could not find a small, simple text layout library that could handle mixed runs 
+of text, eg some words or even letters within words could have different font 
+families, sizes etc, any solutions that came close were either too heavy or too 
+tied to a specific drawing library
 
 Explain that this was designed for my own use cases, so doesn't cover all
 aspects of text layout, explain what it does and does not do, with a note that 
 I'm happy to consider adding other use cases and/or accepting PRs to do so
 
-### license
-
-Add font licenses for Google fonts used in integration testing
-
-### generating runs
-
-Consider filtering out empty runs eg text: '', width: 0 etc - having them
-there is slightly faster to produce the runs initially but may slow down 
-processing slightly
+Does not hyphenate, does not handle RTL or vertical text, does not handle 
+uncommon white space characters, probably does not handle a lot more things too
 
 ### types
 
 Consider using the T extends U pattern, so users can eg decorate their types 
 with additional data which is retained when objects are decorated/extended by
-our module - maybe not necessary and would be less performant
+our module - maybe not necessary 
+
+Would enable them to eg extend the TextRun type with eg custom styles that don't 
+affect layout but can be used by their BYO draw fn
 
 ### draw
 
@@ -33,36 +168,9 @@ whole line at once as only lines are affected by alignment
 
 In that vein, we should probably have a draw for each type, run, word, line etc
 
-### fit
+### advanced metrics etc
 
-We now have a working fit algo, in shfitty.ts
-
-Needs to be tidied up a bit, but it works.
-
-It also needs to handle the case where one or more words are too wide to be 
-wrapped, easy, you just find the ratio between the widest word and the maxWidth 
-and scale by that
-
-Once that's done it can be moved from ./test/ to ./src/ and renamed from 
-shfitty.ts to just 'fit'
-
-There is an additional optimization that can be made:
-
-We can start with an initial scale that's closer to the correct one which 
-will reduce the number of iterations needed to find the correct scale, by eg
-setting it to the ratio of the areas of the existing text and the target size
-
-Also, consider doing what we did with scaling and intend to do with drawing -
-make a fit for runs, words, lines etc - enables eg that effect where each line 
-is scaled indepently to fit the same width to produce a block of text, often
-seen on posters, book covers etc
-
-Some other fit libs also have an option
-to ignore height and only scale for width, consider this too
-
-### blocks etc
-
-Also consider options for the following:
+Allow user to pass a more advanced measuring fn
 
 Adjusting the Line width if actualBoundingBoxLeft and actualBoundingBoxRight are 
 available - we only need to check the first word and last word on a Line
@@ -72,97 +180,62 @@ actualBoundingBoxDescent are available - we only need to check the first Line
 and last Line in a Block
 
 If those metrics are available, consider having an offsetX and offsetY on a 
-Block to reflect this, eg so you can draw text flush inside a rectangle
+Block to reflect this, eg so you can draw text flush inside a rectangle, and 
+so that the soft wrapper can take them into account
+
+This is particularly important if you need all the text to fit *inside* a 
+rectangle with no sticky outy bits, eg by design, italic fonts often fall 
+outside the bounds, emoji fonts oftern go above the top bound, etc
 
 ### tests
 
-Once these are done, expand the test suite to cover more cases
+Currently only have integration tests of the "run it and manually look at the 
+output images" variety
+
+They're fairly comprehensive but poorly structured, everything in a single file
 
 We should probably have unit test for some of the code, but as it's graphical
 in nature integration tests like we currently use are probably more useful
 overall
 
-We could actually run eg a headless browser, convert the runs to styled spans,
+We could even run eg a headless browser, convert the runs to styled spans,
 and compare how it wraps etc - but all text layout engines have minor 
 differences so it may be difficult and doesn't prove much
 
-#### test edge cases
+#### test more edge cases
 
 Very small or very large text. Very short or very long words. Small amounts or
 large amounts of text. Fitting to very small or very large bounds/width etc.
 
 ### documentation
 
-Expand the documentation 
-
-Consider a note that you can use a font module like eg opentype to measure the
-metrics without using eg a canvas getMetrics implementation
+Expand the documentation to explain the exposed API 
 
 ### examples
 
-Add examples for both node (via @napi-rs/canvas) and browser (via canvas)
+Add examples for both node (via @napi-rs/canvas) and browser (via canvas),
+and maybe for fun a BMFont based version in a game engine
 
-### Finalize
+## license
 
-Publish the module to NPM
+MIT License
 
-## Refactoring results
+Copyright (c) 2024 Nik Coughlin <nrkn.com@gmail.com>
 
-Compare results of moving from wrapping the text from scratch every time, to 
-splitting them up into hard and soft wrapping and only performing the soft 
-wrapping step when scale changes
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-prev:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-```
-fit took (ms): 7.7418
-rough fit took (ms): 6.7113
-shfitty
-{ lowerBound: 1, upperBound: 2 }
-{ iterations: 9 }
-shfitty sh1x took (ms): 44.8203
-{ closeFitScale: 1.1103515625 }
-{ lowerBound: 0.5, upperBound: 1 }
-{ iterations: 9 }
-shfitty sh2x took (ms): 33.1616
-{ closeFitScale: 0.55517578125 }
-{ lowerBound: 0.0625, upperBound: 1 }
-{ iterations: 9 }
-shfitty sh10x took (ms): 51.6296
-{ closeFitScale: 0.11102294921875 }
-{ lowerBound: 1, upperBound: 16 }
-{ iterations: 8 }
-shfitty sh0_1x took (ms): 50.0956
-{ closeFitScale: 11.107421875 }
-{ lowerBound: 1, upperBound: 4 }
-{ iterations: 9 }
-shfitty sh0_5x took (ms): 42.8091
-{ closeFitScale: 2.2216796875 }
-```
-
-after:
-```
-shfitty
-{ lowerBound: 1, upperBound: 2 }
-{ iterations: 9 }
-shfitty sh1x took (ms): 3.4538
-{ closeFitScale: 1.1103515625 }
-{ lowerBound: 0.5, upperBound: 1 }
-{ iterations: 9 }
-shfitty sh2x took (ms): 2.4577
-{ closeFitScale: 0.55517578125 }
-{ lowerBound: 0.0625, upperBound: 1 }
-{ iterations: 9 }
-shfitty sh10x took (ms): 2.2276
-{ closeFitScale: 0.11102294921875 }
-{ lowerBound: 1, upperBound: 16 }
-{ iterations: 8 }
-shfitty sh0_1x took (ms): 2.1905
-{ closeFitScale: 11.107421875 }
-{ lowerBound: 1, upperBound: 4 }
-{ iterations: 9 }
-shfitty sh0_5x took (ms): 1.93
-{ closeFitScale: 2.2216796875 }
-```
-
-Good result, over 10x speedup!
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

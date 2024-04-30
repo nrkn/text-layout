@@ -32,6 +32,15 @@ export type MeasureRunWidth = (run: TextRun) => number
 
 export type MeasureRunAscent = (run: TextRun) => number
 
+export type RunBounds = {
+  actualBoundingBoxAscent: number
+  actualBoundingBoxDescent: number
+  actualBoundingBoxLeft: number
+  actualBoundingBoxRight: number
+}
+
+export type MeasureRunBounds = ( run: TextRun ) => RunBounds
+
 export type MeasuredRun = TextRun & Size & AdvanceX
 
 export type Align = 'left' | 'center' | 'right'
@@ -53,6 +62,11 @@ export type Block = {
   lines: Line[]
 } & Size
 
+export type AdjustedBlock = Block & {
+  left: number
+  top: number
+}
+
 export type WrappedBlock = Block & MaxWidth
 
 export type SoftWrapper = (maxWidth: number) =>
@@ -65,3 +79,31 @@ export type DrawRun = (
   run: MeasuredRun, x: number, y: number,
   word: Word, line: Line, block: WrappedBlock
 ) => void
+
+export type FailedFit = 'under' | 'over'
+
+export type FitType = 'shrink' | 'fit'
+
+export type FitterOptions = {
+  tolerance: number
+  scaleStep: number
+  maxIterations: number
+  fitType: FitType
+  wrapper: SoftWrapper
+}
+
+export type FitStrategy = 'widest word' | 'height' | 'shrink'
+
+export type FitFoundDuring = (
+  'initial' | 'estimate' | 'lower bound search' | 'upper bound search' |
+  'mid scale' | 'binary search'
+)
+
+export type FitResult = {
+  wrapped: WrappedBlock
+  bounds: Size
+  strategy: FitStrategy
+  scale: number
+  iterations: number
+  foundDuring: FitFoundDuring
+}

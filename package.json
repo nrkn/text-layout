@@ -4,7 +4,8 @@
   "description": "Wrapping and fitting styled runs of text",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "rimraf dist && tsc"
+    "build": "tsc",
+    "test": "npm run build && node ./dist/test"
   },
   "keywords": [
     "text",
