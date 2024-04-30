@@ -183,7 +183,7 @@ export const fitnessOver: FailedFit = 'over'
 export const fitnessUnder: FailedFit = 'under'
 
 export const defaultFitterOptions = (): FitterOptions => ({
-  tolerance: 5,
+  tolerance: 1,
   scaleStep: 2,
   maxIterations: 100,
   fitType: 'fit',

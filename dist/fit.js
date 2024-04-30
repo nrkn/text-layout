@@ -154,11 +154,11 @@ exports.fitter = fitter;
 exports.fitnessOver = 'over';
 exports.fitnessUnder = 'under';
 const defaultFitterOptions = () => ({
-    tolerance: 5,
+    tolerance: 1,
     scaleStep: 2,
     maxIterations: 100,
     fitType: 'fit',
-    minBoundsDelta: 1e-9,
+    minBoundsDelta: 1e-6,
     // you can override the soft wrapper
     // the idea being that we can provide a new wrapper later
     // that makes better use of font metrics
