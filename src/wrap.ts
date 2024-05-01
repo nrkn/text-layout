@@ -62,12 +62,9 @@ export const softWrapper: SoftWrapper = maxWidth =>
 
           currentLine = {
             words: [group],
-            width: 0,
-            height: 0
+            width: wordWidthWithSpace,
+            height: group.height
           }
-
-          currentLine.width = wordWidthWithSpace
-          currentLine.height = group.height
 
           currentWidth = wordWidthWithSpace
         }
