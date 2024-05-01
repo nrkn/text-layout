@@ -7,7 +7,9 @@ const wrap_js_1 = require("./wrap.js");
 // pretty good, pretty fast fitter - adjusts scale, rewrapping text at each
 // new scale until either it finds a close fit to the height, or the widest 
 // unbreakable word can't be scaled up any further. Optionally, only shrink the
-// text to fit but don't grow if it already fits.
+// text to fit but don't grow if it already fits. If a close fit isn't possible
+// it is detected by the lower and upper bounds converging to a small delta
+// and a best attempt is returned instead.
 const fitter = (bounds, options = {}) => {
     const { tolerance, scaleStep, maxIterations, minBoundsDelta, fitType, wrapper } = Object.assign((0, exports.defaultFitterOptions)(), options);
     assertOptions(tolerance, scaleStep);
@@ -95,10 +97,10 @@ const fitter = (bounds, options = {}) => {
             do {
                 scale *= scaleStep;
                 fit = attemptFit(scale, 'upper bound search');
+                // found it while searching for the upper bound
+                if (isFitResult(fit))
+                    return fit;
             } while (fit !== exports.fitnessOver);
-            // found it while searching for the upper bound
-            if (isFitResult(fit))
-                return fit;
             upperBound = scale;
         }
         else {
@@ -106,22 +108,22 @@ const fitter = (bounds, options = {}) => {
             do {
                 scale /= scaleStep;
                 fit = attemptFit(scale, 'lower bound search');
+                // found it while searching for the lower bound
+                if (isFitResult(fit))
+                    return fit;
             } while (fit !== exports.fitnessUnder);
-            // found it while searching for the lower bound
-            if (isFitResult(fit))
-                return fit;
             lowerBound = scale;
         }
         let midScale = (lowerBound + upperBound) / 2;
-        let midFit = attemptFit(midScale, 'mid scale');
+        fit = attemptFit(midScale, 'mid scale');
         // found it while setting the mid scale
-        if (isFitResult(midFit))
-            return midFit;
+        if (isFitResult(fit))
+            return fit;
         // binary search to find the right scale
         // while( true ) seems scary, but we will either find the fit and return, 
         // or attemptFit will throw at max iterations
         while (true) {
-            if (midFit === exports.fitnessUnder) {
+            if (fit === exports.fitnessUnder) {
                 lowerBound = midScale;
                 const boundsDelta = upperBound - lowerBound;
                 // ok - need to handle the case where the delta between upper and lower 
@@ -138,14 +140,14 @@ const fitter = (bounds, options = {}) => {
                     };
                 }
             }
-            else if (midFit === exports.fitnessOver) {
+            else if (fit === exports.fitnessOver) {
                 upperBound = midScale;
             }
             midScale = (lowerBound + upperBound) / 2;
-            midFit = attemptFit(midScale, 'binary search');
+            fit = attemptFit(midScale, 'binary search');
             // found during binary search
-            if (isFitResult(midFit))
-                return midFit;
+            if (isFitResult(fit))
+                return fit;
         }
     };
     return fitBlock;

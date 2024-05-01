@@ -22,7 +22,7 @@ export const fitter = (bounds: Size, options: Partial<FitterOptions> = {}) => {
   assertOptions(tolerance, scaleStep)
 
   const wrap = wrapper(bounds.width)
-  
+
   const closeW = bounds.width - tolerance
   const closeH = bounds.height - tolerance
 
@@ -119,10 +119,10 @@ export const fitter = (bounds: Size, options: Partial<FitterOptions> = {}) => {
       do {
         scale *= scaleStep
         fit = attemptFit(scale, 'upper bound search')
-      } while (fit !== fitnessOver)
 
-      // found it while searching for the upper bound
-      if (isFitResult(fit)) return fit
+        // found it while searching for the upper bound
+        if (isFitResult(fit)) return fit
+      } while (fit !== fitnessOver)
 
       upperBound = scale
     } else {
@@ -130,25 +130,25 @@ export const fitter = (bounds: Size, options: Partial<FitterOptions> = {}) => {
       do {
         scale /= scaleStep
         fit = attemptFit(scale, 'lower bound search')
-      } while (fit !== fitnessUnder)
 
-      // found it while searching for the lower bound
-      if (isFitResult(fit)) return fit
+        // found it while searching for the lower bound
+        if (isFitResult(fit)) return fit
+      } while (fit !== fitnessUnder)
 
       lowerBound = scale
     }
 
     let midScale = (lowerBound + upperBound) / 2
-    let midFit = attemptFit(midScale, 'mid scale')
+    fit = attemptFit(midScale, 'mid scale')
 
     // found it while setting the mid scale
-    if (isFitResult(midFit)) return midFit
+    if (isFitResult(fit)) return fit
 
     // binary search to find the right scale
     // while( true ) seems scary, but we will either find the fit and return, 
     // or attemptFit will throw at max iterations
     while (true) {
-      if (midFit === fitnessUnder) {
+      if (fit === fitnessUnder) {
         lowerBound = midScale
 
         const boundsDelta = upperBound - lowerBound
@@ -167,15 +167,15 @@ export const fitter = (bounds: Size, options: Partial<FitterOptions> = {}) => {
           }
         }
 
-      } else if (midFit === fitnessOver) {
+      } else if (fit === fitnessOver) {
         upperBound = midScale
       }
 
       midScale = (lowerBound + upperBound) / 2
-      midFit = attemptFit(midScale, 'binary search')
+      fit = attemptFit(midScale, 'binary search')
 
       // found during binary search
-      if (isFitResult(midFit)) return midFit
+      if (isFitResult(fit)) return fit
     }
   }
 
