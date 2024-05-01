@@ -11,7 +11,9 @@ import { softWrapper } from './wrap.js'
 // pretty good, pretty fast fitter - adjusts scale, rewrapping text at each
 // new scale until either it finds a close fit to the height, or the widest 
 // unbreakable word can't be scaled up any further. Optionally, only shrink the
-// text to fit but don't grow if it already fits.
+// text to fit but don't grow if it already fits. If a close fit isn't possible
+// it is detected by the lower and upper bounds converging to a small delta
+// and a best attempt is returned instead.
 export const fitter = (bounds: Size, options: Partial<FitterOptions> = {}) => {
   const {
     tolerance, scaleStep, maxIterations, minBoundsDelta, fitType, wrapper
@@ -20,6 +22,7 @@ export const fitter = (bounds: Size, options: Partial<FitterOptions> = {}) => {
   assertOptions(tolerance, scaleStep)
 
   const wrap = wrapper(bounds.width)
+  
   const closeW = bounds.width - tolerance
   const closeH = bounds.height - tolerance
 

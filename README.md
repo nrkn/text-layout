@@ -143,7 +143,7 @@ if (block.lines.length) {
 Could not find a small, simple text layout library that could handle mixed runs 
 of text, eg some words or even letters within words could have different font 
 families, sizes etc, any solutions that came close were either too heavy or too 
-tied to a specific drawing library
+tied to a specific framework/library
 
 Explain that this was designed for my own use cases, so doesn't cover all
 aspects of text layout, explain what it does and does not do, with a note that 
@@ -204,8 +204,9 @@ differences so it may be difficult and doesn't prove much
 
 #### test more edge cases
 
-Very small or very large text. Very short or very long words. Small amounts or
-large amounts of text. Fitting to very small or very large bounds/width etc.
+Very small or very large initial font sizes. Very short or very long words. 
+Text composed of few words or many words. Text with few hard lines or many. 
+Fitting/wrapping to very small or very large bounds/width etc.
 
 ### documentation
 
@@ -214,7 +215,8 @@ Expand the documentation to explain the exposed API
 ### examples
 
 Add examples for both node (via @napi-rs/canvas) and browser (via canvas),
-and maybe for fun a BMFont based version in a game engine
+for monospaced text eg console, and maybe for fun a BMFont based version in a 
+game engine
 
 ## license
 
