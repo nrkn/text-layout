@@ -39,12 +39,12 @@ export const softWrapper: SoftWrapper = maxWidth =>
       }
 
       const push = () => {
-        if (currentLine.words.length > 0) {
-          softWrappedLines.push(currentLine)
+        if (currentLine.words.length === 0) return
 
-          wrapped.width = Math.max(wrapped.width, currentLine.width)
-          wrapped.height += currentLine.height
-        }
+        softWrappedLines.push(currentLine)
+
+        wrapped.width = Math.max(wrapped.width, currentLine.width)
+        wrapped.height += currentLine.height
       }
 
       for (const group of line.words) {
@@ -57,17 +57,19 @@ export const softWrapper: SoftWrapper = maxWidth =>
           currentLine.words.push(group)
           currentLine.width += wordWidthWithSpace
           currentLine.height = Math.max(currentLine.height, group.height)
-        } else {
-          push()
 
-          currentLine = {
-            words: [group],
-            width: wordWidthWithSpace,
-            height: group.height
-          }
-
-          currentWidth = wordWidthWithSpace
+          continue
         }
+        
+        push()
+
+        currentLine = {
+          words: [group],
+          width: wordWidthWithSpace,
+          height: group.height
+        }
+
+        currentWidth = wordWidthWithSpace
       }
 
       push()

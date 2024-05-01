@@ -32,11 +32,11 @@ const softWrapper = maxWidth => block => {
             height: 0
         };
         const push = () => {
-            if (currentLine.words.length > 0) {
-                softWrappedLines.push(currentLine);
-                wrapped.width = Math.max(wrapped.width, currentLine.width);
-                wrapped.height += currentLine.height;
-            }
+            if (currentLine.words.length === 0)
+                return;
+            softWrappedLines.push(currentLine);
+            wrapped.width = Math.max(wrapped.width, currentLine.width);
+            wrapped.height += currentLine.height;
         };
         for (const group of line.words) {
             const wordWidth = group.width;
@@ -46,16 +46,15 @@ const softWrapper = maxWidth => block => {
                 currentLine.words.push(group);
                 currentLine.width += wordWidthWithSpace;
                 currentLine.height = Math.max(currentLine.height, group.height);
+                continue;
             }
-            else {
-                push();
-                currentLine = {
-                    words: [group],
-                    width: wordWidthWithSpace,
-                    height: group.height
-                };
-                currentWidth = wordWidthWithSpace;
-            }
+            push();
+            currentLine = {
+                words: [group],
+                width: wordWidthWithSpace,
+                height: group.height
+            };
+            currentWidth = wordWidthWithSpace;
         }
         push();
         return softWrappedLines;
