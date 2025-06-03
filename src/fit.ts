@@ -7,6 +7,7 @@ import {
 } from './types.js'
 
 import { softWrapper } from './wrap.js'
+import { opticalLineAscent } from './lines.js'
 
 // pretty good, pretty fast fitter - adjusts scale, rewrapping text at each
 // new scale until either it finds a close fit to the height, or the widest 
@@ -16,7 +17,8 @@ import { softWrapper } from './wrap.js'
 // and a best attempt is returned instead.
 export const fitter = (bounds: Size, options: Partial<FitterOptions> = {}) => {
   const {
-    tolerance, scaleStep, maxIterations, minBoundsDelta, fitType, wrapper
+    tolerance, scaleStep, maxIterations, minBoundsDelta, fitType, wrapper,
+    cropToMetrics = false
   } = Object.assign(defaultFitterOptions(), options)
 
   assertOptions(tolerance, scaleStep)
@@ -42,6 +44,19 @@ export const fitter = (bounds: Size, options: Partial<FitterOptions> = {}) => {
 
       wrapped = wrap(scaledBlock)
 
+      let wrappedHeight = wrapped.height
+
+      if( wrapped.lines.length > 0 && cropToMetrics ){
+        const firstLine = wrapped.lines[0]
+        const ascent = opticalLineAscent(firstLine)
+
+        if( ascent !== null ){
+          const delta = firstLine.height - ascent
+          
+          wrappedHeight -= delta
+        }
+      }
+
       if (iterations > maxIterations) {
         throw Error(`Exceeded max iterations (${maxIterations})`)
       }
@@ -55,7 +70,7 @@ export const fitter = (bounds: Size, options: Partial<FitterOptions> = {}) => {
 
       // the word has been reduced to fit the width, and the height is within
       // bounds, this is the best we can manage with such a long word
-      if (longestWord.width >= closeW && wrapped.height <= bounds.height) {
+      if (longestWord.width >= closeW && wrappedHeight <= bounds.height) {
         return {
           wrapped,
           bounds: { width: bounds.width, height: bounds.height },
@@ -66,9 +81,9 @@ export const fitter = (bounds: Size, options: Partial<FitterOptions> = {}) => {
         }
       }
       // otherwise, we need to check the height
-      if (wrapped.height > bounds.height) {
+      if (wrappedHeight > bounds.height) {
         return fitnessOver
-      } else if (wrapped.height < closeH) {
+      } else if (wrappedHeight < closeH) {
         return fitnessUnder
       }
 

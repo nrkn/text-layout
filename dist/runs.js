@@ -80,10 +80,29 @@ const trimEnd = (run) => ({
     text: run.text.trimEnd()
 });
 const measuredRun = (measureWidth) => (run) => {
-    const nextX = measureWidth(run);
-    const width = run.text.endsWith(' ') ? measureWidth(trimEnd(run)) : nextX;
+    let width = 0;
+    let bounds = {};
     const height = run.fontSize * run.lineHeight;
-    return { ...run, width, height, advanceX: nextX };
+    const nextX = measureWidth(run);
+    let advanceX;
+    if (typeof nextX === 'number') {
+        width = (run.text.endsWith(' ') ?
+            measureWidth(trimEnd(run)) :
+            nextX);
+        advanceX = nextX;
+    }
+    else {
+        width = (run.text.endsWith(' ') ?
+            measureWidth(trimEnd(run)).width :
+            nextX.width);
+        advanceX = nextX.width;
+        const { actualBoundingBoxAscent, actualBoundingBoxDescent, actualBoundingBoxLeft, actualBoundingBoxRight } = nextX;
+        Object.assign(bounds, {
+            actualBoundingBoxAscent, actualBoundingBoxDescent,
+            actualBoundingBoxLeft, actualBoundingBoxRight
+        });
+    }
+    return { ...run, width, height, advanceX, ...bounds };
 };
 exports.measuredRun = measuredRun;
 //# sourceMappingURL=runs.js.map

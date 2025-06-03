@@ -14,6 +14,10 @@ export type Height = {
     height: number;
 };
 export type Size = Width & Height;
+export type OpticalHorizontal = {
+    opticalLeft: number;
+    opticalRight: number;
+};
 export type AdvanceX = {
     advanceX: number;
 };
@@ -28,15 +32,17 @@ export type RunBounds = {
     actualBoundingBoxLeft: number;
     actualBoundingBoxRight: number;
 };
+export type TextMetricsLike = RunBounds & Width;
 export type MeasureRunBounds = (run: TextRun) => RunBounds;
-export type MeasuredRun = TextRun & Size & AdvanceX;
+export type MeasureMetrics = (run: TextRun) => TextMetricsLike;
+export type MeasuredRun = TextRun & Size & AdvanceX & Partial<RunBounds>;
 export type Align = 'left' | 'center' | 'right';
 export type Word = {
     runs: MeasuredRun[];
-} & Size & AdvanceX;
+} & Size & AdvanceX & Partial<OpticalHorizontal>;
 export type Line = {
     words: Word[];
-} & Size;
+} & Size & Partial<OpticalHorizontal>;
 export type Block = {
     lines: Line[];
 } & Size;
@@ -46,7 +52,7 @@ export type AdjustedBlock = Block & {
 };
 export type WrappedBlock = Block & MaxWidth;
 export type SoftWrapper = (maxWidth: number) => (block: Block) => WrappedBlock;
-export type HardWrapper = (measure: MeasureRunWidth) => (runs: TextRun[]) => Block;
+export type HardWrapper = (measure: MeasureRunWidth | MeasureMetrics) => (runs: TextRun[]) => Block;
 export type DrawRun = (run: MeasuredRun, x: number, y: number, word: Word, line: Line, block: WrappedBlock) => void;
 export type FailedFit = 'under' | 'over';
 export type FitType = 'shrink' | 'fit';
@@ -57,6 +63,7 @@ export type FitterOptions = {
     minBoundsDelta: number;
     fitType: FitType;
     wrapper: SoftWrapper;
+    cropToMetrics?: boolean;
 };
 export type FitStrategy = 'widest word' | 'height' | 'shrink' | 'no close fit';
 export type FitFoundDuring = ('initial' | 'estimate' | 'lower bound search' | 'upper bound search' | 'mid scale' | 'binary search' | 'lower/upper delta check');

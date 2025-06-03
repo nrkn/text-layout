@@ -1,5 +1,7 @@
 import {
-  MeasureRunWidth, MeasuredRun, TextRun, TextRunStyle
+  MeasureMetrics,
+  MeasureRunBounds,
+  MeasureRunWidth, MeasuredRun, RunBounds, TextRun, TextRunStyle
 } from './types.js'
 
 export const defaultRun = (text: string): TextRun => ({
@@ -101,11 +103,43 @@ const trimEnd = (run: TextRun) => ({
   text: run.text.trimEnd()
 })
 
-export const measuredRun = (measureWidth: MeasureRunWidth) =>
+export const measuredRun = (
+  measureWidth: MeasureRunWidth | MeasureMetrics
+) =>
   (run: TextRun): MeasuredRun => {
-    const nextX = measureWidth(run)
-    const width = run.text.endsWith(' ') ? measureWidth(trimEnd(run)) : nextX
+    let width = 0
+    let bounds: Partial<RunBounds> = {}
     const height = run.fontSize * run.lineHeight
 
-    return { ...run, width, height, advanceX: nextX }
+    const nextX = measureWidth(run)
+    let advanceX: number
+
+    if (typeof nextX === 'number') {
+      width = (
+        run.text.endsWith(' ') ?
+          (measureWidth as MeasureRunWidth)(trimEnd(run)) :
+          nextX
+      )
+      advanceX = nextX
+    } else {
+      width = (
+        run.text.endsWith(' ') ?
+          (measureWidth as MeasureMetrics)(trimEnd(run)).width :
+          nextX.width
+      )
+
+      advanceX = nextX.width
+
+      const {
+        actualBoundingBoxAscent, actualBoundingBoxDescent,
+        actualBoundingBoxLeft, actualBoundingBoxRight
+      } = nextX
+
+      Object.assign(bounds, {
+        actualBoundingBoxAscent, actualBoundingBoxDescent,
+        actualBoundingBoxLeft, actualBoundingBoxRight
+      })
+    }
+
+    return { ...run, width, height, advanceX, ...bounds }
   }

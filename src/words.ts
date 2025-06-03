@@ -1,8 +1,13 @@
 import { groupWords, measuredRun, splitRunsOnSpaces } from './runs.js'
-import { Block, Line, MeasureRunWidth, TextRun, Word } from './types.js'
+
+import {
+  Block, Line, MeasureMetrics, MeasureRunWidth, TextRun, Word
+} from './types.js'
 
 // split the runs on spaces and generate words (unbreakable runs)
-export const runsToWords = (measureText: MeasureRunWidth) => {
+export const runsToWords = (
+  measureText: MeasureRunWidth | MeasureMetrics
+) => {
   const mr = measuredRun(measureText)
 
   const rtw = (runs: TextRun[]) => {
@@ -27,6 +32,17 @@ export const runsToWords = (measureText: MeasureRunWidth) => {
         word.width += run.width
         word.advanceX += run.advanceX
         word.height = Math.max(word.height, run.height)
+
+        if (i === 0 && run.actualBoundingBoxLeft !== undefined) {
+          word.opticalLeft = run.actualBoundingBoxLeft
+        }
+
+        if (
+          i === measuredRuns.length - 1 &&
+          run.actualBoundingBoxRight !== undefined
+        ) {
+          word.opticalRight = run.actualBoundingBoxRight
+        }
       }
 
       words.push(word)

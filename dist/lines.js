@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.lineAscent = exports.runsToLines = void 0;
+exports.opticalLineAscent = exports.lineAscent = exports.runsToLines = void 0;
 const runs_js_1 = require("./runs.js");
 const words_js_1 = require("./words.js");
 // generates hard wrapped lines from runs
@@ -21,6 +21,14 @@ const runsToLines = (measureText) => {
                 line.width += word.advanceX;
                 line.height = Math.max(line.height, word.height);
             }
+            const firstWord = words[0];
+            const lastWord = words[words.length - 1];
+            if (firstWord.opticalLeft !== undefined) {
+                line.opticalLeft = firstWord.opticalLeft;
+            }
+            if (lastWord.opticalRight !== undefined) {
+                line.opticalRight = lastWord.opticalRight;
+            }
             lines.push(line);
         }
         return lines;
@@ -39,4 +47,21 @@ const lineAscent = (measureAscent) => (line) => {
     return maxAscent;
 };
 exports.lineAscent = lineAscent;
+const opticalLineAscent = (line) => {
+    let maxAscent = null;
+    for (const word of line.words) {
+        for (const run of word.runs) {
+            if (run.actualBoundingBoxAscent !== undefined) {
+                if (maxAscent === null) {
+                    maxAscent = run.actualBoundingBoxAscent;
+                }
+                else {
+                    maxAscent = Math.max(maxAscent, run.actualBoundingBoxAscent);
+                }
+            }
+        }
+    }
+    return maxAscent;
+};
+exports.opticalLineAscent = opticalLineAscent;
 //# sourceMappingURL=lines.js.map

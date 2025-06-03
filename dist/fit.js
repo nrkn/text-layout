@@ -4,6 +4,7 @@ exports.defaultFitterOptions = exports.fitnessUnder = exports.fitnessOver = expo
 const words_js_1 = require("./words.js");
 const scale_js_1 = require("./scale.js");
 const wrap_js_1 = require("./wrap.js");
+const lines_js_1 = require("./lines.js");
 // pretty good, pretty fast fitter - adjusts scale, rewrapping text at each
 // new scale until either it finds a close fit to the height, or the widest 
 // unbreakable word can't be scaled up any further. Optionally, only shrink the
@@ -11,7 +12,7 @@ const wrap_js_1 = require("./wrap.js");
 // it is detected by the lower and upper bounds converging to a small delta
 // and a best attempt is returned instead.
 const fitter = (bounds, options = {}) => {
-    const { tolerance, scaleStep, maxIterations, minBoundsDelta, fitType, wrapper } = Object.assign((0, exports.defaultFitterOptions)(), options);
+    const { tolerance, scaleStep, maxIterations, minBoundsDelta, fitType, wrapper, cropToMetrics = false } = Object.assign((0, exports.defaultFitterOptions)(), options);
     assertOptions(tolerance, scaleStep);
     const wrap = wrapper(bounds.width);
     const closeW = bounds.width - tolerance;
@@ -28,6 +29,15 @@ const fitter = (bounds, options = {}) => {
             iterations++;
             const scaledBlock = (0, scale_js_1.blockScaler)(scale)(block);
             wrapped = wrap(scaledBlock);
+            let wrappedHeight = wrapped.height;
+            if (wrapped.lines.length > 0 && cropToMetrics) {
+                const firstLine = wrapped.lines[0];
+                const ascent = (0, lines_js_1.opticalLineAscent)(firstLine);
+                if (ascent !== null) {
+                    const delta = firstLine.height - ascent;
+                    wrappedHeight -= delta;
+                }
+            }
             if (iterations > maxIterations) {
                 throw Error(`Exceeded max iterations (${maxIterations})`);
             }
@@ -38,7 +48,7 @@ const fitter = (bounds, options = {}) => {
             }
             // the word has been reduced to fit the width, and the height is within
             // bounds, this is the best we can manage with such a long word
-            if (longestWord.width >= closeW && wrapped.height <= bounds.height) {
+            if (longestWord.width >= closeW && wrappedHeight <= bounds.height) {
                 return {
                     wrapped,
                     bounds: { width: bounds.width, height: bounds.height },
@@ -49,10 +59,10 @@ const fitter = (bounds, options = {}) => {
                 };
             }
             // otherwise, we need to check the height
-            if (wrapped.height > bounds.height) {
+            if (wrappedHeight > bounds.height) {
                 return exports.fitnessOver;
             }
-            else if (wrapped.height < closeH) {
+            else if (wrappedHeight < closeH) {
                 return exports.fitnessUnder;
             }
             // great - found a close fit

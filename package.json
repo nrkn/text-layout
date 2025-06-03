@@ -1,12 +1,13 @@
 {
   "name": "@nrkn/text-layout",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Wrapping and fitting styled runs of text",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "test": "npm run build && node ./dist/test"
+    "test": "npm run build && node ./dist/test",
+    "testoptical": "npm run build && node ./dist/test/test-optical"
   },
   "keywords": [
     "text",

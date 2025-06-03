@@ -1,3 +1,11 @@
+
+> @nrkn/text-layout@0.0.3 test
+> npm run build && node ./dist/test
+
+
+> @nrkn/text-layout@0.0.3 build
+> tsc
+
 runs
 ```json
 [
@@ -114,7 +122,16 @@ words
         "color": "#b7410e",
         "width": 101.55999755859375,
         "height": 96,
-        "advanceX": 101.55999755859375
+        "advanceX": 101.55999755859375,
+        "actualBoundingBoxAscent": 69,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -12,
+        "actualBoundingBoxRight": 90,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       },
       {
         "text": "Sphinx ",
@@ -122,14 +139,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e1f41",
-        "width": 270.4800109863281,
+        "width": 291.2799987792969,
         "height": 96,
-        "advanceX": 291.2799987792969
+        "advanceX": 291.2799987792969,
+        "actualBoundingBoxAscent": 62,
+        "actualBoundingBoxDescent": 19,
+        "actualBoundingBoxLeft": -3,
+        "actualBoundingBoxRight": 270.479736328125,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 372.0400085449219,
+    "width": 392.8399963378906,
     "advanceX": 392.8399963378906,
-    "height": 96
+    "height": 96,
+    "opticalLeft": -12,
+    "opticalRight": 270.479736328125
   },
   {
     "runs": [
@@ -139,14 +167,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e1f41",
-        "width": 80.4800033569336,
+        "width": 101.27999877929688,
         "height": 96,
-        "advanceX": 101.27999877929688
+        "advanceX": 101.27999877929688,
+        "actualBoundingBoxAscent": 62,
+        "actualBoundingBoxDescent": 1,
+        "actualBoundingBoxLeft": -3,
+        "actualBoundingBoxRight": 80.47993469238281,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 80.4800033569336,
+    "width": 101.27999877929688,
     "advanceX": 101.27999877929688,
-    "height": 96
+    "height": 96,
+    "opticalLeft": -3,
+    "opticalRight": 80.47993469238281
   },
   {
     "runs": [
@@ -158,7 +197,16 @@ words
         "color": "#0e1f41",
         "width": 214.0800018310547,
         "height": 96,
-        "advanceX": 214.0800018310547
+        "advanceX": 214.0800018310547,
+        "actualBoundingBoxAscent": 62,
+        "actualBoundingBoxDescent": 1,
+        "actualBoundingBoxLeft": -6,
+        "actualBoundingBoxRight": 214.4798583984375,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       },
       {
         "text": "⚫",
@@ -168,7 +216,16 @@ words
         "color": "#b7410e",
         "width": 101.55999755859375,
         "height": 96,
-        "advanceX": 101.55999755859375
+        "advanceX": 101.55999755859375,
+        "actualBoundingBoxAscent": 69,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -9,
+        "actualBoundingBoxRight": 92,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       },
       {
         "text": " ",
@@ -176,14 +233,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e1f41",
-        "width": 0,
+        "width": 20.799999237060547,
         "height": 96,
-        "advanceX": 20.799999237060547
+        "advanceX": 20.799999237060547,
+        "actualBoundingBoxAscent": 0,
+        "actualBoundingBoxDescent": 0,
+        "actualBoundingBoxLeft": 0,
+        "actualBoundingBoxRight": 0,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 315.63999938964844,
+    "width": 336.439998626709,
     "advanceX": 336.439998626709,
-    "height": 96
+    "height": 96,
+    "opticalLeft": -6,
+    "opticalRight": 0
   },
   {
     "runs": [
@@ -195,7 +263,16 @@ words
         "color": "#0e1f41",
         "width": 0,
         "height": 96,
-        "advanceX": 0
+        "advanceX": 0,
+        "actualBoundingBoxAscent": 0,
+        "actualBoundingBoxDescent": 0,
+        "actualBoundingBoxLeft": 0,
+        "actualBoundingBoxRight": 0,
+        "fontBoundingBoxAscent": 0,
+        "fontBoundingBoxDescent": 0,
+        "alphabeticBaseline": 0,
+        "emHeightAscent": 0,
+        "emHeightDescent": 0
       },
       {
         "text": "💎",
@@ -205,7 +282,16 @@ words
         "color": "#b7410e",
         "width": 101.55999755859375,
         "height": 96,
-        "advanceX": 101.55999755859375
+        "advanceX": 101.55999755859375,
+        "actualBoundingBoxAscent": 69,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -3,
+        "actualBoundingBoxRight": 99,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       },
       {
         "text": "quartz, ",
@@ -213,14 +299,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e1f41",
-        "width": 284.3999938964844,
+        "width": 305.20001220703125,
         "height": 96,
-        "advanceX": 305.20001220703125
+        "advanceX": 305.20001220703125,
+        "actualBoundingBoxAscent": 54,
+        "actualBoundingBoxDescent": 19,
+        "actualBoundingBoxLeft": -3,
+        "actualBoundingBoxRight": 284.39971923828125,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 385.9599914550781,
+    "width": 406.760009765625,
     "advanceX": 406.760009765625,
-    "height": 96
+    "height": 96,
+    "opticalLeft": 0,
+    "opticalRight": 284.39971923828125
   },
   {
     "runs": [
@@ -232,7 +329,16 @@ words
         "color": "#0e1f41",
         "width": 225.52000427246094,
         "height": 96,
-        "advanceX": 225.52000427246094
+        "advanceX": 225.52000427246094,
+        "actualBoundingBoxAscent": 62,
+        "actualBoundingBoxDescent": 19,
+        "actualBoundingBoxLeft": 6,
+        "actualBoundingBoxRight": 222.23983764648438,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       },
       {
         "text": "👩",
@@ -242,7 +348,16 @@ words
         "color": "#b7410e",
         "width": 101.55999755859375,
         "height": 96,
-        "advanceX": 101.55999755859375
+        "advanceX": 101.55999755859375,
+        "actualBoundingBoxAscent": 69,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -17,
+        "actualBoundingBoxRight": 85,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       },
       {
         "text": "‍",
@@ -252,7 +367,16 @@ words
         "color": "#0e1f41",
         "width": 0,
         "height": 96,
-        "advanceX": 0
+        "advanceX": 0,
+        "actualBoundingBoxAscent": 0,
+        "actualBoundingBoxDescent": 0,
+        "actualBoundingBoxLeft": 0,
+        "actualBoundingBoxRight": 0,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       },
       {
         "text": "⚖",
@@ -262,7 +386,16 @@ words
         "color": "#b7410e",
         "width": 101.55999755859375,
         "height": 96,
-        "advanceX": 101.55999755859375
+        "advanceX": 101.55999755859375,
+        "actualBoundingBoxAscent": 69,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -7,
+        "actualBoundingBoxRight": 95,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       },
       {
         "text": "️ ",
@@ -270,14 +403,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e1f41",
-        "width": 0,
+        "width": 20.799999237060547,
         "height": 96,
-        "advanceX": 20.799999237060547
+        "advanceX": 20.799999237060547,
+        "actualBoundingBoxAscent": 0,
+        "actualBoundingBoxDescent": 0,
+        "actualBoundingBoxLeft": 0,
+        "actualBoundingBoxRight": 0,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 428.63999938964844,
+    "width": 449.439998626709,
     "advanceX": 449.439998626709,
-    "height": 96
+    "height": 96,
+    "opticalLeft": 6,
+    "opticalRight": 0
   },
   {
     "runs": [
@@ -289,7 +433,16 @@ words
         "color": "#0e1f41",
         "width": 0,
         "height": 96,
-        "advanceX": 0
+        "advanceX": 0,
+        "actualBoundingBoxAscent": 0,
+        "actualBoundingBoxDescent": 0,
+        "actualBoundingBoxLeft": 0,
+        "actualBoundingBoxRight": 0,
+        "fontBoundingBoxAscent": 0,
+        "fontBoundingBoxDescent": 0,
+        "alphabeticBaseline": 0,
+        "emHeightAscent": 0,
+        "emHeightDescent": 0
       },
       {
         "text": "🙂",
@@ -299,7 +452,16 @@ words
         "color": "#b7410e",
         "width": 101.55999755859375,
         "height": 96,
-        "advanceX": 101.55999755859375
+        "advanceX": 101.55999755859375,
+        "actualBoundingBoxAscent": 69,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -9,
+        "actualBoundingBoxRight": 93,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       },
       {
         "text": "my ",
@@ -307,14 +469,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e1f41",
-        "width": 124.08000183105469,
+        "width": 144.8800048828125,
         "height": 96,
-        "advanceX": 144.8800048828125
+        "advanceX": 144.8800048828125,
+        "actualBoundingBoxAscent": 45,
+        "actualBoundingBoxDescent": 19,
+        "actualBoundingBoxLeft": -6,
+        "actualBoundingBoxRight": 124.07987976074219,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 225.63999938964844,
+    "width": 246.44000244140625,
     "advanceX": 246.44000244140625,
-    "height": 96
+    "height": 96,
+    "opticalLeft": 0,
+    "opticalRight": 124.07987976074219
   },
   {
     "runs": [
@@ -326,7 +499,16 @@ words
         "color": "#0e1f41",
         "width": 161.9199981689453,
         "height": 96,
-        "advanceX": 161.9199981689453
+        "advanceX": 161.9199981689453,
+        "actualBoundingBoxAscent": 45,
+        "actualBoundingBoxDescent": 1,
+        "actualBoundingBoxLeft": 0,
+        "actualBoundingBoxRight": 161.43991088867188,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       },
       {
         "text": "💍",
@@ -336,7 +518,16 @@ words
         "color": "#b7410e",
         "width": 101.55999755859375,
         "height": 96,
-        "advanceX": 101.55999755859375
+        "advanceX": 101.55999755859375,
+        "actualBoundingBoxAscent": 69,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -18,
+        "actualBoundingBoxRight": 84,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       },
       {
         "text": ".\n\n",
@@ -346,7 +537,16 @@ words
         "color": "#0e1f41",
         "width": 22.799999237060547,
         "height": 96,
-        "advanceX": 22.799999237060547
+        "advanceX": 22.799999237060547,
+        "actualBoundingBoxAscent": 58,
+        "actualBoundingBoxDescent": 1,
+        "actualBoundingBoxLeft": -4,
+        "actualBoundingBoxRight": 111.7999267578125,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       },
       {
         "text": "Amazingly",
@@ -356,7 +556,16 @@ words
         "color": "#0e1f41",
         "width": 391.44000244140625,
         "height": 96,
-        "advanceX": 391.44000244140625
+        "advanceX": 391.44000244140625,
+        "actualBoundingBoxAscent": 62,
+        "actualBoundingBoxDescent": 19,
+        "actualBoundingBoxLeft": 5,
+        "actualBoundingBoxRight": 395.9197082519531,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       },
       {
         "text": "😲",
@@ -366,7 +575,16 @@ words
         "color": "#b7410e",
         "width": 101.55999755859375,
         "height": 96,
-        "advanceX": 101.55999755859375
+        "advanceX": 101.55999755859375,
+        "actualBoundingBoxAscent": 69,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -9,
+        "actualBoundingBoxRight": 93,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       },
       {
         "text": " ",
@@ -374,14 +592,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e1f41",
-        "width": 0,
+        "width": 20.799999237060547,
         "height": 96,
-        "advanceX": 20.799999237060547
+        "advanceX": 20.799999237060547,
+        "actualBoundingBoxAscent": 0,
+        "actualBoundingBoxDescent": 0,
+        "actualBoundingBoxLeft": 0,
+        "actualBoundingBoxRight": 0,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 779.2799949645996,
+    "width": 800.0799942016602,
     "advanceX": 800.0799942016602,
-    "height": 96
+    "height": 96,
+    "opticalLeft": 0,
+    "opticalRight": 0
   },
   {
     "runs": [
@@ -393,7 +622,16 @@ words
         "color": "#0e1f41",
         "width": 0,
         "height": 96,
-        "advanceX": 0
+        "advanceX": 0,
+        "actualBoundingBoxAscent": 0,
+        "actualBoundingBoxDescent": 0,
+        "actualBoundingBoxLeft": 0,
+        "actualBoundingBoxRight": 0,
+        "fontBoundingBoxAscent": 0,
+        "fontBoundingBoxDescent": 0,
+        "alphabeticBaseline": 0,
+        "emHeightAscent": 0,
+        "emHeightDescent": 0
       },
       {
         "text": "🤏",
@@ -403,7 +641,16 @@ words
         "color": "#b7410e",
         "width": 101.55999755859375,
         "height": 96,
-        "advanceX": 101.55999755859375
+        "advanceX": 101.55999755859375,
+        "actualBoundingBoxAscent": 67,
+        "actualBoundingBoxDescent": 12,
+        "actualBoundingBoxLeft": -7,
+        "actualBoundingBoxRight": 95,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       },
       {
         "text": "few ",
@@ -411,14 +658,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e1f41",
-        "width": 135.83999633789062,
+        "width": 156.63999938964844,
         "height": 96,
-        "advanceX": 156.63999938964844
+        "advanceX": 156.63999938964844,
+        "actualBoundingBoxAscent": 62,
+        "actualBoundingBoxDescent": 19,
+        "actualBoundingBoxLeft": 9,
+        "actualBoundingBoxRight": 135.83985900878906,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 237.39999389648438,
+    "width": 258.1999969482422,
     "advanceX": 258.1999969482422,
-    "height": 96
+    "height": 96,
+    "opticalLeft": 0,
+    "opticalRight": 135.83985900878906
   },
   {
     "runs": [
@@ -430,7 +688,16 @@ words
         "color": "#0e1f41",
         "width": 498.4800109863281,
         "height": 96,
-        "advanceX": 498.4800109863281
+        "advanceX": 498.4800109863281,
+        "actualBoundingBoxAscent": 62,
+        "actualBoundingBoxDescent": 19,
+        "actualBoundingBoxLeft": -3,
+        "actualBoundingBoxRight": 497.6395263671875,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       },
       {
         "text": "💃",
@@ -440,7 +707,16 @@ words
         "color": "#b7410e",
         "width": 101.55999755859375,
         "height": 96,
-        "advanceX": 101.55999755859375
+        "advanceX": 101.55999755859375,
+        "actualBoundingBoxAscent": 69,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -19,
+        "actualBoundingBoxRight": 82,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       },
       {
         "text": " ",
@@ -448,14 +724,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e1f41",
-        "width": 0,
+        "width": 20.799999237060547,
         "height": 96,
-        "advanceX": 20.799999237060547
+        "advanceX": 20.799999237060547,
+        "actualBoundingBoxAscent": 0,
+        "actualBoundingBoxDescent": 0,
+        "actualBoundingBoxLeft": 0,
+        "actualBoundingBoxRight": 0,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 600.0400085449219,
+    "width": 620.8400077819824,
     "advanceX": 620.8400077819824,
-    "height": 96
+    "height": 96,
+    "opticalLeft": -3,
+    "opticalRight": 0
   },
   {
     "runs": [
@@ -467,7 +754,16 @@ words
         "color": "#0e1f41",
         "width": 0,
         "height": 96,
-        "advanceX": 0
+        "advanceX": 0,
+        "actualBoundingBoxAscent": 0,
+        "actualBoundingBoxDescent": 0,
+        "actualBoundingBoxLeft": 0,
+        "actualBoundingBoxRight": 0,
+        "fontBoundingBoxAscent": 0,
+        "fontBoundingBoxDescent": 0,
+        "alphabeticBaseline": 0,
+        "emHeightAscent": 0,
+        "emHeightDescent": 0
       },
       {
         "text": "🎁",
@@ -477,7 +773,16 @@ words
         "color": "#b7410e",
         "width": 101.55999755859375,
         "height": 96,
-        "advanceX": 101.55999755859375
+        "advanceX": 101.55999755859375,
+        "actualBoundingBoxAscent": 69,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -12,
+        "actualBoundingBoxRight": 90,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       },
       {
         "text": "provide ",
@@ -485,14 +790,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e1f41",
-        "width": 281.67999267578125,
+        "width": 302.4800109863281,
         "height": 96,
-        "advanceX": 302.4800109863281
+        "advanceX": 302.4800109863281,
+        "actualBoundingBoxAscent": 62,
+        "actualBoundingBoxDescent": 19,
+        "actualBoundingBoxLeft": 3,
+        "actualBoundingBoxRight": 281.6797180175781,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 383.239990234375,
+    "width": 404.0400085449219,
     "advanceX": 404.0400085449219,
-    "height": 96
+    "height": 96,
+    "opticalLeft": 0,
+    "opticalRight": 281.6797180175781
   },
   {
     "runs": [
@@ -504,7 +820,16 @@ words
         "color": "#0e1f41",
         "width": 378.1600036621094,
         "height": 96,
-        "advanceX": 378.1600036621094
+        "advanceX": 378.1600036621094,
+        "actualBoundingBoxAscent": 62,
+        "actualBoundingBoxDescent": 19,
+        "actualBoundingBoxLeft": 11,
+        "actualBoundingBoxRight": 377.31964111328125,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       },
       {
         "text": "🎶",
@@ -514,7 +839,16 @@ words
         "color": "#b7410e",
         "width": 101.55999755859375,
         "height": 96,
-        "advanceX": 101.55999755859375
+        "advanceX": 101.55999755859375,
+        "actualBoundingBoxAscent": 65,
+        "actualBoundingBoxDescent": 10,
+        "actualBoundingBoxLeft": -5,
+        "actualBoundingBoxRight": 96,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       },
       {
         "text": ".\n\n",
@@ -524,7 +858,16 @@ words
         "color": "#0e1f41",
         "width": 22.799999237060547,
         "height": 96,
-        "advanceX": 22.799999237060547
+        "advanceX": 22.799999237060547,
+        "actualBoundingBoxAscent": 58,
+        "actualBoundingBoxDescent": 1,
+        "actualBoundingBoxLeft": 0,
+        "actualBoundingBoxRight": 111.7999267578125,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       },
       {
         "text": "🎒Pack ",
@@ -532,14 +875,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e411f",
-        "width": 290.8399963378906,
+        "width": 311.6400146484375,
         "height": 96,
-        "advanceX": 311.6400146484375
+        "advanceX": 311.6400146484375,
+        "actualBoundingBoxAscent": 69,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -9,
+        "actualBoundingBoxRight": 93,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       }
     ],
-    "width": 793.3599967956543,
+    "width": 814.1600151062012,
     "advanceX": 814.1600151062012,
-    "height": 96
+    "height": 96,
+    "opticalLeft": 11,
+    "opticalRight": 93
   },
   {
     "runs": [
@@ -549,14 +903,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e411f",
-        "width": 225.63999938964844,
+        "width": 246.44000244140625,
         "height": 96,
-        "advanceX": 246.44000244140625
+        "advanceX": 246.44000244140625,
+        "actualBoundingBoxAscent": 45,
+        "actualBoundingBoxDescent": 19,
+        "actualBoundingBoxLeft": -6,
+        "actualBoundingBoxRight": 124.55992126464844,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 225.63999938964844,
+    "width": 246.44000244140625,
     "advanceX": 246.44000244140625,
-    "height": 96
+    "height": 96,
+    "opticalLeft": -6,
+    "opticalRight": 124.55992126464844
   },
   {
     "runs": [
@@ -566,14 +931,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e411f",
-        "width": 246.36000061035156,
+        "width": 267.1600036621094,
         "height": 96,
-        "advanceX": 267.1600036621094
+        "advanceX": 267.1600036621094,
+        "actualBoundingBoxAscent": 71,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -12,
+        "actualBoundingBoxRight": 89,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       }
     ],
-    "width": 246.36000061035156,
+    "width": 267.1600036621094,
     "advanceX": 267.1600036621094,
-    "height": 96
+    "height": 96,
+    "opticalLeft": -12,
+    "opticalRight": 89
   },
   {
     "runs": [
@@ -583,14 +959,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e411f",
-        "width": 180.16000366210938,
+        "width": 200.9600067138672,
         "height": 96,
-        "advanceX": 200.9600067138672
+        "advanceX": 200.9600067138672,
+        "actualBoundingBoxAscent": 62,
+        "actualBoundingBoxDescent": 1,
+        "actualBoundingBoxLeft": 0,
+        "actualBoundingBoxRight": 180.1598358154297,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 180.16000366210938,
+    "width": 200.9600067138672,
     "advanceX": 200.9600067138672,
-    "height": 96
+    "height": 96,
+    "opticalLeft": 0,
+    "opticalRight": 180.1598358154297
   },
   {
     "runs": [
@@ -600,14 +987,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e411f",
-        "width": 249.72000122070312,
+        "width": 270.5199890136719,
         "height": 96,
-        "advanceX": 270.5199890136719
+        "advanceX": 270.5199890136719,
+        "actualBoundingBoxAscent": 62,
+        "actualBoundingBoxDescent": 1,
+        "actualBoundingBoxLeft": -1,
+        "actualBoundingBoxRight": 144.87991333007812,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 249.72000122070312,
+    "width": 270.5199890136719,
     "advanceX": 270.5199890136719,
-    "height": 96
+    "height": 96,
+    "opticalLeft": -1,
+    "opticalRight": 144.87991333007812
   },
   {
     "runs": [
@@ -617,14 +1015,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e411f",
-        "width": 339.79998779296875,
+        "width": 360.6000061035156,
         "height": 96,
-        "advanceX": 360.6000061035156
+        "advanceX": 360.6000061035156,
+        "actualBoundingBoxAscent": 69,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -9,
+        "actualBoundingBoxRight": 92,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       }
     ],
-    "width": 339.79998779296875,
+    "width": 360.6000061035156,
     "advanceX": 360.6000061035156,
-    "height": 96
+    "height": 96,
+    "opticalLeft": -9,
+    "opticalRight": 92
   },
   {
     "runs": [
@@ -634,14 +1043,25 @@ words
         "fontSize": 80,
         "lineHeight": 1.2,
         "color": "#0e411f",
-        "width": 339.3999938964844,
+        "width": 360.20001220703125,
         "height": 96,
-        "advanceX": 360.20001220703125
+        "advanceX": 360.20001220703125,
+        "actualBoundingBoxAscent": 62,
+        "actualBoundingBoxDescent": 19,
+        "actualBoundingBoxLeft": -6,
+        "actualBoundingBoxRight": 236.5198211669922,
+        "fontBoundingBoxAscent": 85.52000427246094,
+        "fontBoundingBoxDescent": 23.440000534057617,
+        "alphabeticBaseline": 85.52000427246094,
+        "emHeightAscent": 85.52000427246094,
+        "emHeightDescent": 23.440000534057617
       }
     ],
-    "width": 339.3999938964844,
+    "width": 360.20001220703125,
     "advanceX": 360.20001220703125,
-    "height": 96
+    "height": 96,
+    "opticalLeft": -6,
+    "opticalRight": 236.5198211669922
   },
   {
     "runs": [
@@ -653,12 +1073,23 @@ words
         "color": "#0e411f",
         "width": 291.7200012207031,
         "height": 96,
-        "advanceX": 291.7200012207031
+        "advanceX": 291.7200012207031,
+        "actualBoundingBoxAscent": 69,
+        "actualBoundingBoxDescent": 14,
+        "actualBoundingBoxLeft": -24,
+        "actualBoundingBoxRight": 77,
+        "fontBoundingBoxAscent": 74.21875,
+        "fontBoundingBoxDescent": 19.53125,
+        "alphabeticBaseline": 74.21875,
+        "emHeightAscent": 74.21875,
+        "emHeightDescent": 19.53125
       }
     ],
     "width": 291.7200012207031,
     "advanceX": 291.7200012207031,
-    "height": 96
+    "height": 96,
+    "opticalLeft": -24,
+    "opticalRight": 77
   }
 ]
 ```
@@ -677,7 +1108,16 @@ lines
             "color": "#b7410e",
             "width": 101.55999755859375,
             "height": 96,
-            "advanceX": 101.55999755859375
+            "advanceX": 101.55999755859375,
+            "actualBoundingBoxAscent": 69,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -12,
+            "actualBoundingBoxRight": 90,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           },
           {
             "text": "Sphinx ",
@@ -685,14 +1125,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e1f41",
-            "width": 270.4800109863281,
+            "width": 291.2799987792969,
             "height": 96,
-            "advanceX": 291.2799987792969
+            "advanceX": 291.2799987792969,
+            "actualBoundingBoxAscent": 62,
+            "actualBoundingBoxDescent": 19,
+            "actualBoundingBoxLeft": -3,
+            "actualBoundingBoxRight": 270.479736328125,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 372.0400085449219,
+        "width": 392.8399963378906,
         "advanceX": 392.8399963378906,
-        "height": 96
+        "height": 96,
+        "opticalLeft": -12,
+        "opticalRight": 270.479736328125
       },
       {
         "runs": [
@@ -702,14 +1153,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e1f41",
-            "width": 80.4800033569336,
+            "width": 101.27999877929688,
             "height": 96,
-            "advanceX": 101.27999877929688
+            "advanceX": 101.27999877929688,
+            "actualBoundingBoxAscent": 62,
+            "actualBoundingBoxDescent": 1,
+            "actualBoundingBoxLeft": -3,
+            "actualBoundingBoxRight": 80.47993469238281,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 80.4800033569336,
+        "width": 101.27999877929688,
         "advanceX": 101.27999877929688,
-        "height": 96
+        "height": 96,
+        "opticalLeft": -3,
+        "opticalRight": 80.47993469238281
       },
       {
         "runs": [
@@ -721,7 +1183,16 @@ lines
             "color": "#0e1f41",
             "width": 214.0800018310547,
             "height": 96,
-            "advanceX": 214.0800018310547
+            "advanceX": 214.0800018310547,
+            "actualBoundingBoxAscent": 62,
+            "actualBoundingBoxDescent": 1,
+            "actualBoundingBoxLeft": -6,
+            "actualBoundingBoxRight": 214.4798583984375,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           },
           {
             "text": "⚫",
@@ -731,7 +1202,16 @@ lines
             "color": "#b7410e",
             "width": 101.55999755859375,
             "height": 96,
-            "advanceX": 101.55999755859375
+            "advanceX": 101.55999755859375,
+            "actualBoundingBoxAscent": 69,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -9,
+            "actualBoundingBoxRight": 92,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           },
           {
             "text": " ",
@@ -739,14 +1219,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e1f41",
-            "width": 0,
+            "width": 20.799999237060547,
             "height": 96,
-            "advanceX": 20.799999237060547
+            "advanceX": 20.799999237060547,
+            "actualBoundingBoxAscent": 0,
+            "actualBoundingBoxDescent": 0,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 0,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 315.63999938964844,
+        "width": 336.439998626709,
         "advanceX": 336.439998626709,
-        "height": 96
+        "height": 96,
+        "opticalLeft": -6,
+        "opticalRight": 0
       },
       {
         "runs": [
@@ -758,7 +1249,16 @@ lines
             "color": "#0e1f41",
             "width": 0,
             "height": 96,
-            "advanceX": 0
+            "advanceX": 0,
+            "actualBoundingBoxAscent": 0,
+            "actualBoundingBoxDescent": 0,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 0,
+            "fontBoundingBoxAscent": 0,
+            "fontBoundingBoxDescent": 0,
+            "alphabeticBaseline": 0,
+            "emHeightAscent": 0,
+            "emHeightDescent": 0
           },
           {
             "text": "💎",
@@ -768,7 +1268,16 @@ lines
             "color": "#b7410e",
             "width": 101.55999755859375,
             "height": 96,
-            "advanceX": 101.55999755859375
+            "advanceX": 101.55999755859375,
+            "actualBoundingBoxAscent": 69,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -3,
+            "actualBoundingBoxRight": 99,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           },
           {
             "text": "quartz, ",
@@ -776,14 +1285,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e1f41",
-            "width": 284.3999938964844,
+            "width": 305.20001220703125,
             "height": 96,
-            "advanceX": 305.20001220703125
+            "advanceX": 305.20001220703125,
+            "actualBoundingBoxAscent": 54,
+            "actualBoundingBoxDescent": 19,
+            "actualBoundingBoxLeft": -3,
+            "actualBoundingBoxRight": 284.39971923828125,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 385.9599914550781,
+        "width": 406.760009765625,
         "advanceX": 406.760009765625,
-        "height": 96
+        "height": 96,
+        "opticalLeft": 0,
+        "opticalRight": 284.39971923828125
       },
       {
         "runs": [
@@ -795,7 +1315,16 @@ lines
             "color": "#0e1f41",
             "width": 225.52000427246094,
             "height": 96,
-            "advanceX": 225.52000427246094
+            "advanceX": 225.52000427246094,
+            "actualBoundingBoxAscent": 62,
+            "actualBoundingBoxDescent": 19,
+            "actualBoundingBoxLeft": 6,
+            "actualBoundingBoxRight": 222.23983764648438,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           },
           {
             "text": "👩",
@@ -805,7 +1334,16 @@ lines
             "color": "#b7410e",
             "width": 101.55999755859375,
             "height": 96,
-            "advanceX": 101.55999755859375
+            "advanceX": 101.55999755859375,
+            "actualBoundingBoxAscent": 69,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -17,
+            "actualBoundingBoxRight": 85,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           },
           {
             "text": "‍",
@@ -815,7 +1353,16 @@ lines
             "color": "#0e1f41",
             "width": 0,
             "height": 96,
-            "advanceX": 0
+            "advanceX": 0,
+            "actualBoundingBoxAscent": 0,
+            "actualBoundingBoxDescent": 0,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 0,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           },
           {
             "text": "⚖",
@@ -825,7 +1372,16 @@ lines
             "color": "#b7410e",
             "width": 101.55999755859375,
             "height": 96,
-            "advanceX": 101.55999755859375
+            "advanceX": 101.55999755859375,
+            "actualBoundingBoxAscent": 69,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -7,
+            "actualBoundingBoxRight": 95,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           },
           {
             "text": "️ ",
@@ -833,14 +1389,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e1f41",
-            "width": 0,
+            "width": 20.799999237060547,
             "height": 96,
-            "advanceX": 20.799999237060547
+            "advanceX": 20.799999237060547,
+            "actualBoundingBoxAscent": 0,
+            "actualBoundingBoxDescent": 0,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 0,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 428.63999938964844,
+        "width": 449.439998626709,
         "advanceX": 449.439998626709,
-        "height": 96
+        "height": 96,
+        "opticalLeft": 6,
+        "opticalRight": 0
       },
       {
         "runs": [
@@ -852,7 +1419,16 @@ lines
             "color": "#0e1f41",
             "width": 0,
             "height": 96,
-            "advanceX": 0
+            "advanceX": 0,
+            "actualBoundingBoxAscent": 0,
+            "actualBoundingBoxDescent": 0,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 0,
+            "fontBoundingBoxAscent": 0,
+            "fontBoundingBoxDescent": 0,
+            "alphabeticBaseline": 0,
+            "emHeightAscent": 0,
+            "emHeightDescent": 0
           },
           {
             "text": "🙂",
@@ -862,7 +1438,16 @@ lines
             "color": "#b7410e",
             "width": 101.55999755859375,
             "height": 96,
-            "advanceX": 101.55999755859375
+            "advanceX": 101.55999755859375,
+            "actualBoundingBoxAscent": 69,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -9,
+            "actualBoundingBoxRight": 93,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           },
           {
             "text": "my ",
@@ -870,14 +1455,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e1f41",
-            "width": 124.08000183105469,
+            "width": 144.8800048828125,
             "height": 96,
-            "advanceX": 144.8800048828125
+            "advanceX": 144.8800048828125,
+            "actualBoundingBoxAscent": 45,
+            "actualBoundingBoxDescent": 19,
+            "actualBoundingBoxLeft": -6,
+            "actualBoundingBoxRight": 124.07987976074219,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 225.63999938964844,
+        "width": 246.44000244140625,
         "advanceX": 246.44000244140625,
-        "height": 96
+        "height": 96,
+        "opticalLeft": 0,
+        "opticalRight": 124.07987976074219
       },
       {
         "runs": [
@@ -889,7 +1485,16 @@ lines
             "color": "#0e1f41",
             "width": 161.9199981689453,
             "height": 96,
-            "advanceX": 161.9199981689453
+            "advanceX": 161.9199981689453,
+            "actualBoundingBoxAscent": 45,
+            "actualBoundingBoxDescent": 1,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 161.43991088867188,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           },
           {
             "text": "💍",
@@ -899,7 +1504,16 @@ lines
             "color": "#b7410e",
             "width": 101.55999755859375,
             "height": 96,
-            "advanceX": 101.55999755859375
+            "advanceX": 101.55999755859375,
+            "actualBoundingBoxAscent": 69,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -18,
+            "actualBoundingBoxRight": 84,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           },
           {
             "text": ".",
@@ -909,16 +1523,29 @@ lines
             "color": "#0e1f41",
             "width": 22.799999237060547,
             "height": 96,
-            "advanceX": 22.799999237060547
+            "advanceX": 22.799999237060547,
+            "actualBoundingBoxAscent": 13,
+            "actualBoundingBoxDescent": 1,
+            "actualBoundingBoxLeft": -4,
+            "actualBoundingBoxRight": 19,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
         "width": 286.2799949645996,
         "advanceX": 286.2799949645996,
-        "height": 96
+        "height": 96,
+        "opticalLeft": 0,
+        "opticalRight": 19
       }
     ],
     "width": 2219.4799995422363,
-    "height": 96
+    "height": 96,
+    "opticalLeft": -12,
+    "opticalRight": 19
   },
   {
     "words": [
@@ -932,16 +1559,29 @@ lines
             "color": "#0e1f41",
             "width": 0,
             "height": 96,
-            "advanceX": 0
+            "advanceX": 0,
+            "actualBoundingBoxAscent": 0,
+            "actualBoundingBoxDescent": 0,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 0,
+            "fontBoundingBoxAscent": 0,
+            "fontBoundingBoxDescent": 0,
+            "alphabeticBaseline": 0,
+            "emHeightAscent": 0,
+            "emHeightDescent": 0
           }
         ],
         "width": 0,
         "advanceX": 0,
-        "height": 96
+        "height": 96,
+        "opticalLeft": 0,
+        "opticalRight": 0
       }
     ],
     "width": 0,
-    "height": 96
+    "height": 96,
+    "opticalLeft": 0,
+    "opticalRight": 0
   },
   {
     "words": [
@@ -955,7 +1595,16 @@ lines
             "color": "#0e1f41",
             "width": 0,
             "height": 96,
-            "advanceX": 0
+            "advanceX": 0,
+            "actualBoundingBoxAscent": 0,
+            "actualBoundingBoxDescent": 0,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 0,
+            "fontBoundingBoxAscent": 0,
+            "fontBoundingBoxDescent": 0,
+            "alphabeticBaseline": 0,
+            "emHeightAscent": 0,
+            "emHeightDescent": 0
           },
           {
             "text": "Amazingly",
@@ -965,7 +1614,16 @@ lines
             "color": "#0e1f41",
             "width": 391.44000244140625,
             "height": 96,
-            "advanceX": 391.44000244140625
+            "advanceX": 391.44000244140625,
+            "actualBoundingBoxAscent": 62,
+            "actualBoundingBoxDescent": 19,
+            "actualBoundingBoxLeft": 5,
+            "actualBoundingBoxRight": 395.9197082519531,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           },
           {
             "text": "😲",
@@ -975,7 +1633,16 @@ lines
             "color": "#b7410e",
             "width": 101.55999755859375,
             "height": 96,
-            "advanceX": 101.55999755859375
+            "advanceX": 101.55999755859375,
+            "actualBoundingBoxAscent": 69,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -9,
+            "actualBoundingBoxRight": 93,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           },
           {
             "text": " ",
@@ -983,14 +1650,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e1f41",
-            "width": 0,
+            "width": 20.799999237060547,
             "height": 96,
-            "advanceX": 20.799999237060547
+            "advanceX": 20.799999237060547,
+            "actualBoundingBoxAscent": 0,
+            "actualBoundingBoxDescent": 0,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 0,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 493,
+        "width": 513.7999992370605,
         "advanceX": 513.7999992370605,
-        "height": 96
+        "height": 96,
+        "opticalLeft": 0,
+        "opticalRight": 0
       },
       {
         "runs": [
@@ -1002,7 +1680,16 @@ lines
             "color": "#0e1f41",
             "width": 0,
             "height": 96,
-            "advanceX": 0
+            "advanceX": 0,
+            "actualBoundingBoxAscent": 0,
+            "actualBoundingBoxDescent": 0,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 0,
+            "fontBoundingBoxAscent": 0,
+            "fontBoundingBoxDescent": 0,
+            "alphabeticBaseline": 0,
+            "emHeightAscent": 0,
+            "emHeightDescent": 0
           },
           {
             "text": "🤏",
@@ -1012,7 +1699,16 @@ lines
             "color": "#b7410e",
             "width": 101.55999755859375,
             "height": 96,
-            "advanceX": 101.55999755859375
+            "advanceX": 101.55999755859375,
+            "actualBoundingBoxAscent": 67,
+            "actualBoundingBoxDescent": 12,
+            "actualBoundingBoxLeft": -7,
+            "actualBoundingBoxRight": 95,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           },
           {
             "text": "few ",
@@ -1020,14 +1716,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e1f41",
-            "width": 135.83999633789062,
+            "width": 156.63999938964844,
             "height": 96,
-            "advanceX": 156.63999938964844
+            "advanceX": 156.63999938964844,
+            "actualBoundingBoxAscent": 62,
+            "actualBoundingBoxDescent": 19,
+            "actualBoundingBoxLeft": 9,
+            "actualBoundingBoxRight": 135.83985900878906,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 237.39999389648438,
+        "width": 258.1999969482422,
         "advanceX": 258.1999969482422,
-        "height": 96
+        "height": 96,
+        "opticalLeft": 0,
+        "opticalRight": 135.83985900878906
       },
       {
         "runs": [
@@ -1039,7 +1746,16 @@ lines
             "color": "#0e1f41",
             "width": 498.4800109863281,
             "height": 96,
-            "advanceX": 498.4800109863281
+            "advanceX": 498.4800109863281,
+            "actualBoundingBoxAscent": 62,
+            "actualBoundingBoxDescent": 19,
+            "actualBoundingBoxLeft": -3,
+            "actualBoundingBoxRight": 497.6395263671875,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           },
           {
             "text": "💃",
@@ -1049,7 +1765,16 @@ lines
             "color": "#b7410e",
             "width": 101.55999755859375,
             "height": 96,
-            "advanceX": 101.55999755859375
+            "advanceX": 101.55999755859375,
+            "actualBoundingBoxAscent": 69,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -19,
+            "actualBoundingBoxRight": 82,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           },
           {
             "text": " ",
@@ -1057,14 +1782,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e1f41",
-            "width": 0,
+            "width": 20.799999237060547,
             "height": 96,
-            "advanceX": 20.799999237060547
+            "advanceX": 20.799999237060547,
+            "actualBoundingBoxAscent": 0,
+            "actualBoundingBoxDescent": 0,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 0,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 600.0400085449219,
+        "width": 620.8400077819824,
         "advanceX": 620.8400077819824,
-        "height": 96
+        "height": 96,
+        "opticalLeft": -3,
+        "opticalRight": 0
       },
       {
         "runs": [
@@ -1076,7 +1812,16 @@ lines
             "color": "#0e1f41",
             "width": 0,
             "height": 96,
-            "advanceX": 0
+            "advanceX": 0,
+            "actualBoundingBoxAscent": 0,
+            "actualBoundingBoxDescent": 0,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 0,
+            "fontBoundingBoxAscent": 0,
+            "fontBoundingBoxDescent": 0,
+            "alphabeticBaseline": 0,
+            "emHeightAscent": 0,
+            "emHeightDescent": 0
           },
           {
             "text": "🎁",
@@ -1086,7 +1831,16 @@ lines
             "color": "#b7410e",
             "width": 101.55999755859375,
             "height": 96,
-            "advanceX": 101.55999755859375
+            "advanceX": 101.55999755859375,
+            "actualBoundingBoxAscent": 69,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -12,
+            "actualBoundingBoxRight": 90,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           },
           {
             "text": "provide ",
@@ -1094,14 +1848,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e1f41",
-            "width": 281.67999267578125,
+            "width": 302.4800109863281,
             "height": 96,
-            "advanceX": 302.4800109863281
+            "advanceX": 302.4800109863281,
+            "actualBoundingBoxAscent": 62,
+            "actualBoundingBoxDescent": 19,
+            "actualBoundingBoxLeft": 3,
+            "actualBoundingBoxRight": 281.6797180175781,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 383.239990234375,
+        "width": 404.0400085449219,
         "advanceX": 404.0400085449219,
-        "height": 96
+        "height": 96,
+        "opticalLeft": 0,
+        "opticalRight": 281.6797180175781
       },
       {
         "runs": [
@@ -1113,7 +1878,16 @@ lines
             "color": "#0e1f41",
             "width": 378.1600036621094,
             "height": 96,
-            "advanceX": 378.1600036621094
+            "advanceX": 378.1600036621094,
+            "actualBoundingBoxAscent": 62,
+            "actualBoundingBoxDescent": 19,
+            "actualBoundingBoxLeft": 11,
+            "actualBoundingBoxRight": 377.31964111328125,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           },
           {
             "text": "🎶",
@@ -1123,7 +1897,16 @@ lines
             "color": "#b7410e",
             "width": 101.55999755859375,
             "height": 96,
-            "advanceX": 101.55999755859375
+            "advanceX": 101.55999755859375,
+            "actualBoundingBoxAscent": 65,
+            "actualBoundingBoxDescent": 10,
+            "actualBoundingBoxLeft": -5,
+            "actualBoundingBoxRight": 96,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           },
           {
             "text": ".",
@@ -1133,16 +1916,29 @@ lines
             "color": "#0e1f41",
             "width": 22.799999237060547,
             "height": 96,
-            "advanceX": 22.799999237060547
+            "advanceX": 22.799999237060547,
+            "actualBoundingBoxAscent": 13,
+            "actualBoundingBoxDescent": 1,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 15,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
         "width": 502.5200004577637,
         "advanceX": 502.5200004577637,
-        "height": 96
+        "height": 96,
+        "opticalLeft": 11,
+        "opticalRight": 15
       }
     ],
     "width": 2299.4000129699707,
-    "height": 96
+    "height": 96,
+    "opticalLeft": 0,
+    "opticalRight": 15
   },
   {
     "words": [
@@ -1156,16 +1952,29 @@ lines
             "color": "#0e1f41",
             "width": 0,
             "height": 96,
-            "advanceX": 0
+            "advanceX": 0,
+            "actualBoundingBoxAscent": 0,
+            "actualBoundingBoxDescent": 0,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 0,
+            "fontBoundingBoxAscent": 0,
+            "fontBoundingBoxDescent": 0,
+            "alphabeticBaseline": 0,
+            "emHeightAscent": 0,
+            "emHeightDescent": 0
           }
         ],
         "width": 0,
         "advanceX": 0,
-        "height": 96
+        "height": 96,
+        "opticalLeft": 0,
+        "opticalRight": 0
       }
     ],
     "width": 0,
-    "height": 96
+    "height": 96,
+    "opticalLeft": 0,
+    "opticalRight": 0
   },
   {
     "words": [
@@ -1179,7 +1988,16 @@ lines
             "color": "#0e1f41",
             "width": 0,
             "height": 96,
-            "advanceX": 0
+            "advanceX": 0,
+            "actualBoundingBoxAscent": 0,
+            "actualBoundingBoxDescent": 0,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 0,
+            "fontBoundingBoxAscent": 0,
+            "fontBoundingBoxDescent": 0,
+            "alphabeticBaseline": 0,
+            "emHeightAscent": 0,
+            "emHeightDescent": 0
           },
           {
             "text": "🎒Pack ",
@@ -1187,14 +2005,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e411f",
-            "width": 290.8399963378906,
+            "width": 311.6400146484375,
             "height": 96,
-            "advanceX": 311.6400146484375
+            "advanceX": 311.6400146484375,
+            "actualBoundingBoxAscent": 69,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -9,
+            "actualBoundingBoxRight": 93,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           }
         ],
-        "width": 290.8399963378906,
+        "width": 311.6400146484375,
         "advanceX": 311.6400146484375,
-        "height": 96
+        "height": 96,
+        "opticalLeft": 0,
+        "opticalRight": 93
       },
       {
         "runs": [
@@ -1204,14 +2033,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e411f",
-            "width": 225.63999938964844,
+            "width": 246.44000244140625,
             "height": 96,
-            "advanceX": 246.44000244140625
+            "advanceX": 246.44000244140625,
+            "actualBoundingBoxAscent": 45,
+            "actualBoundingBoxDescent": 19,
+            "actualBoundingBoxLeft": -6,
+            "actualBoundingBoxRight": 124.55992126464844,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 225.63999938964844,
+        "width": 246.44000244140625,
         "advanceX": 246.44000244140625,
-        "height": 96
+        "height": 96,
+        "opticalLeft": -6,
+        "opticalRight": 124.55992126464844
       },
       {
         "runs": [
@@ -1221,14 +2061,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e411f",
-            "width": 246.36000061035156,
+            "width": 267.1600036621094,
             "height": 96,
-            "advanceX": 267.1600036621094
+            "advanceX": 267.1600036621094,
+            "actualBoundingBoxAscent": 71,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -12,
+            "actualBoundingBoxRight": 89,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           }
         ],
-        "width": 246.36000061035156,
+        "width": 267.1600036621094,
         "advanceX": 267.1600036621094,
-        "height": 96
+        "height": 96,
+        "opticalLeft": -12,
+        "opticalRight": 89
       },
       {
         "runs": [
@@ -1238,14 +2089,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e411f",
-            "width": 180.16000366210938,
+            "width": 200.9600067138672,
             "height": 96,
-            "advanceX": 200.9600067138672
+            "advanceX": 200.9600067138672,
+            "actualBoundingBoxAscent": 62,
+            "actualBoundingBoxDescent": 1,
+            "actualBoundingBoxLeft": 0,
+            "actualBoundingBoxRight": 180.1598358154297,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 180.16000366210938,
+        "width": 200.9600067138672,
         "advanceX": 200.9600067138672,
-        "height": 96
+        "height": 96,
+        "opticalLeft": 0,
+        "opticalRight": 180.1598358154297
       },
       {
         "runs": [
@@ -1255,14 +2117,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e411f",
-            "width": 249.72000122070312,
+            "width": 270.5199890136719,
             "height": 96,
-            "advanceX": 270.5199890136719
+            "advanceX": 270.5199890136719,
+            "actualBoundingBoxAscent": 62,
+            "actualBoundingBoxDescent": 1,
+            "actualBoundingBoxLeft": -1,
+            "actualBoundingBoxRight": 144.87991333007812,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 249.72000122070312,
+        "width": 270.5199890136719,
         "advanceX": 270.5199890136719,
-        "height": 96
+        "height": 96,
+        "opticalLeft": -1,
+        "opticalRight": 144.87991333007812
       },
       {
         "runs": [
@@ -1272,14 +2145,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e411f",
-            "width": 339.79998779296875,
+            "width": 360.6000061035156,
             "height": 96,
-            "advanceX": 360.6000061035156
+            "advanceX": 360.6000061035156,
+            "actualBoundingBoxAscent": 69,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -9,
+            "actualBoundingBoxRight": 92,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           }
         ],
-        "width": 339.79998779296875,
+        "width": 360.6000061035156,
         "advanceX": 360.6000061035156,
-        "height": 96
+        "height": 96,
+        "opticalLeft": -9,
+        "opticalRight": 92
       },
       {
         "runs": [
@@ -1289,14 +2173,25 @@ lines
             "fontSize": 80,
             "lineHeight": 1.2,
             "color": "#0e411f",
-            "width": 339.3999938964844,
+            "width": 360.20001220703125,
             "height": 96,
-            "advanceX": 360.20001220703125
+            "advanceX": 360.20001220703125,
+            "actualBoundingBoxAscent": 62,
+            "actualBoundingBoxDescent": 19,
+            "actualBoundingBoxLeft": -6,
+            "actualBoundingBoxRight": 236.5198211669922,
+            "fontBoundingBoxAscent": 85.52000427246094,
+            "fontBoundingBoxDescent": 23.440000534057617,
+            "alphabeticBaseline": 85.52000427246094,
+            "emHeightAscent": 85.52000427246094,
+            "emHeightDescent": 23.440000534057617
           }
         ],
-        "width": 339.3999938964844,
+        "width": 360.20001220703125,
         "advanceX": 360.20001220703125,
-        "height": 96
+        "height": 96,
+        "opticalLeft": -6,
+        "opticalRight": 236.5198211669922
       },
       {
         "runs": [
@@ -1308,16 +2203,29 @@ lines
             "color": "#0e411f",
             "width": 291.7200012207031,
             "height": 96,
-            "advanceX": 291.7200012207031
+            "advanceX": 291.7200012207031,
+            "actualBoundingBoxAscent": 69,
+            "actualBoundingBoxDescent": 14,
+            "actualBoundingBoxLeft": -24,
+            "actualBoundingBoxRight": 77,
+            "fontBoundingBoxAscent": 74.21875,
+            "fontBoundingBoxDescent": 19.53125,
+            "alphabeticBaseline": 74.21875,
+            "emHeightAscent": 74.21875,
+            "emHeightDescent": 19.53125
           }
         ],
         "width": 291.7200012207031,
         "advanceX": 291.7200012207031,
-        "height": 96
+        "height": 96,
+        "opticalLeft": -24,
+        "opticalRight": 77
       }
     ],
     "width": 2309.240036010742,
-    "height": 96
+    "height": 96,
+    "opticalLeft": 0,
+    "opticalRight": 77
   }
 ]
 ```
@@ -2012,38 +2920,38 @@ default options {
   minBoundsDelta: 0.000001,
   wrapper: [Function: softWrapper]
 }
-fit sh1x took (ms): 0.6699 {
+fit sh1x took (ms): 1.0837 {
   strategy: 'height',
   scale: 1.1101602678103204,
   iterations: 9,
   foundDuring: 'binary search'
 }
-fit sh2x took (ms): 0.9192 {
+fit sh2x took (ms): 0.3433 {
   strategy: 'height',
   scale: 0.5551522649551506,
   iterations: 12,
   foundDuring: 'binary search'
 }
-fit sh10x took (ms): 0.3633 {
+fit sh10x took (ms): 0.3903 {
   strategy: 'height',
   scale: 0.11110148441639203,
   iterations: 11,
   foundDuring: 'binary search'
 }
-fit sh0_1x took (ms): 0.5488 {
+fit sh0_1x took (ms): 0.3864 {
   strategy: 'height',
   scale: 11.102212255376969,
   iterations: 11,
   foundDuring: 'binary search'
 }
-fit sh0_5x took (ms): 0.7828 {
+fit sh0_5x took (ms): 0.2996 {
   strategy: 'height',
   scale: 2.220442451075394,
   iterations: 11,
   foundDuring: 'binary search'
 }
 centered fit
-fit sh1x_centered took (ms): 0.7226 {
+fit sh1x_centered took (ms): 0.6467 {
   strategy: 'height',
   scale: 1.1101602678103204,
   iterations: 9,
@@ -2057,31 +2965,31 @@ small tolerance {
   minBoundsDelta: 0.000001,
   wrapper: [Function: softWrapper]
 }
-fit sh1x_tol_0_1 took (ms): 0.4588 {
+fit sh1x_tol_0_1 took (ms): 0.225 {
   strategy: 'height',
   scale: 1.1110622730279165,
   iterations: 16,
   foundDuring: 'binary search'
 }
-fit sh2x_tol_0_1 took (ms): 0.9138 {
+fit sh2x_tol_0_1 took (ms): 0.2953 {
   strategy: 'height',
   scale: 0.5555228156174385,
   iterations: 17,
   foundDuring: 'binary search'
 }
-fit sh10x_tol_0_1 took (ms): 0.3812 {
+fit sh10x_tol_0_1 took (ms): 0.449 {
   strategy: 'height',
   scale: 0.11110148441639203,
   iterations: 11,
   foundDuring: 'binary search'
 }
-fit sh0_1x_tol_0_1 took (ms): 0.3929 {
+fit sh0_1x_tol_0_1 took (ms): 0.3159 {
   strategy: 'height',
   scale: 11.110391684838199,
   iterations: 14,
   foundDuring: 'binary search'
 }
-fit sh0_5x_tol_0_1 took (ms): 0.3405 {
+fit sh0_5x_tol_0_1 took (ms): 0.4012 {
   strategy: 'height',
   scale: 2.2220783369676402,
   iterations: 14,
@@ -2095,31 +3003,31 @@ large tolerance {
   minBoundsDelta: 0.000001,
   wrapper: [Function: softWrapper]
 }
-fit sh1x_tol_10 took (ms): 0.157 {
+fit sh1x_tol_10 took (ms): 0.2465 {
   strategy: 'height',
   scale: 1.1012789856678378,
   iterations: 7,
   foundDuring: 'binary search'
 }
-fit sh2x_tol_10 took (ms): 0.1484 {
+fit sh2x_tol_10 took (ms): 0.0626 {
   strategy: 'height',
   scale: 0.5519183682660915,
   iterations: 2,
   foundDuring: 'estimate'
 }
-fit sh10x_tol_10 took (ms): 0.196 {
+fit sh10x_tol_10 took (ms): 0.2013 {
   strategy: 'height',
   scale: 0.11070039602499712,
   iterations: 9,
   foundDuring: 'binary search'
 }
-fit sh0_1x_tol_10 took (ms): 0.1705 {
+fit sh0_1x_tol_10 took (ms): 0.1706 {
   strategy: 'height',
   scale: 11.080400443480356,
   iterations: 9,
   foundDuring: 'binary search'
 }
-fit sh0_5x_tol_10 took (ms): 0.4855 {
+fit sh0_5x_tol_10 took (ms): 0.1431 {
   strategy: 'height',
   scale: 2.216080088696071,
   iterations: 9,
@@ -2133,31 +3041,31 @@ small scale {
   minBoundsDelta: 0.000001,
   wrapper: [Function: softWrapper]
 }
-fit sh1x_ss_1_1 took (ms): 0.3139 {
+fit sh1x_ss_1_1 took (ms): 0.0951 {
   strategy: 'height',
   scale: 1.1109676570960008,
   iterations: 5,
   foundDuring: 'binary search'
 }
-fit sh2x_ss_1_1 took (ms): 0.3397 {
+fit sh2x_ss_1_1 took (ms): 0.1237 {
   strategy: 'height',
   scale: 0.5553678580677546,
   iterations: 7,
   foundDuring: 'binary search'
 }
-fit sh10x_ss_1_1 took (ms): 0.255 {
+fit sh10x_ss_1_1 took (ms): 0.1272 {
   strategy: 'height',
   scale: 0.11102126673811306,
   iterations: 7,
   foundDuring: 'binary search'
 }
-fit sh0_1x_ss_1_1 took (ms): 0.1595 {
+fit sh0_1x_ss_1_1 took (ms): 0.1503 {
   strategy: 'height',
   scale: 11.104195147367571,
   iterations: 7,
   foundDuring: 'binary search'
 }
-fit sh0_5x_ss_1_1 took (ms): 0.1643 {
+fit sh0_5x_ss_1_1 took (ms): 0.1153 {
   strategy: 'height',
   scale: 2.220839029473514,
   iterations: 7,
@@ -2171,31 +3079,31 @@ large scale {
   minBoundsDelta: 0.000001,
   wrapper: [Function: softWrapper]
 }
-fit sh1x_ss_4 took (ms): 0.5393 {
+fit sh1x_ss_4 took (ms): 0.2263 {
   strategy: 'height',
   scale: 1.1101602678103202,
   iterations: 8,
   foundDuring: 'binary search'
 }
-fit sh2x_ss_4 took (ms): 0.2383 {
+fit sh2x_ss_4 took (ms): 0.135 {
   strategy: 'height',
   scale: 0.5551522649551507,
   iterations: 12,
   foundDuring: 'binary search'
 }
-fit sh10x_ss_4 took (ms): 0.5017 {
+fit sh10x_ss_4 took (ms): 0.1867 {
   strategy: 'height',
   scale: 0.11110148441639203,
   iterations: 11,
   foundDuring: 'binary search'
 }
-fit sh0_1x_ss_4 took (ms): 0.1789 {
+fit sh0_1x_ss_4 took (ms): 0.1044 {
   strategy: 'height',
   scale: 11.10221225537697,
   iterations: 10,
   foundDuring: 'binary search'
 }
-fit sh0_5x_ss_4 took (ms): 0.3574 {
+fit sh0_5x_ss_4 took (ms): 0.0921 {
   strategy: 'height',
   scale: 2.220442451075394,
   iterations: 10,
@@ -2209,31 +3117,31 @@ very low tolerance {
   minBoundsDelta: 0.000001,
   wrapper: [Function: softWrapper]
 }
-fit sh1x_tol_1e_5 took (ms): 0.4068 {
+fit sh1x_tol_1e_5 took (ms): 0.2573 {
   strategy: 'no close fit',
   scale: 0.568402057118884,
   iterations: 27,
   foundDuring: 'lower/upper delta check'
 }
-fit sh2x_tol_1e_5 took (ms): 0.9244 {
+fit sh2x_tol_1e_5 took (ms): 0.6756 {
   strategy: 'no close fit',
   scale: 1.103836736532183,
   iterations: 26,
   foundDuring: 'lower/upper delta check'
 }
-fit sh10x_tol_1e_5 took (ms): 0.6897 {
+fit sh10x_tol_1e_5 took (ms): 0.4622 {
   strategy: 'no close fit',
   scale: 0.20535725639419755,
   iterations: 22,
   foundDuring: 'lower/upper delta check'
 }
-fit sh0_1x_tol_1e_5 took (ms): 0.4622 {
+fit sh0_1x_tol_1e_5 took (ms): 0.2917 {
   strategy: 'no close fit',
   scale: 5.5838238455334075,
   iterations: 27,
   foundDuring: 'lower/upper delta check'
 }
-fit sh0_5x_tol_1e_5 took (ms): 0.6161 {
+fit sh0_5x_tol_1e_5 took (ms): 0.2091 {
   strategy: 'no close fit',
   scale: 1.1167647691066815,
   iterations: 27,
@@ -2247,58 +3155,58 @@ shrink only {
   minBoundsDelta: 0.000001,
   wrapper: [Function: softWrapper]
 }
-fit sh1x_shrink took (ms): 0.0456 { strategy: 'shrink', scale: 1, iterations: 1, foundDuring: 'initial' }
-fit sh2x_shrink took (ms): 0.2469 {
+fit sh1x_shrink took (ms): 0.0838 { strategy: 'shrink', scale: 1, iterations: 1, foundDuring: 'initial' }
+fit sh2x_shrink took (ms): 0.1172 {
   strategy: 'height',
   scale: 0.5551522649551506,
   iterations: 12,
   foundDuring: 'binary search'
 }
-fit sh10x_shrink took (ms): 0.3003 {
+fit sh10x_shrink took (ms): 0.138 {
   strategy: 'height',
   scale: 0.11110148441639203,
   iterations: 11,
   foundDuring: 'binary search'
 }
-fit sh0_1x_shrink took (ms): 0.0452 { strategy: 'shrink', scale: 1, iterations: 1, foundDuring: 'initial' }
-fit sh0_5x_shrink took (ms): 0.0724 { strategy: 'shrink', scale: 1, iterations: 1, foundDuring: 'initial' }
+fit sh0_1x_shrink took (ms): 0.0388 { strategy: 'shrink', scale: 1, iterations: 1, foundDuring: 'initial' }
+fit sh0_5x_shrink took (ms): 0.0331 { strategy: 'shrink', scale: 1, iterations: 1, foundDuring: 'initial' }
 fit wide word
-fit wide-word_sh1x took (ms): 0.4875 {
+fit wide-word_sh1x took (ms): 0.0952 {
   strategy: 'widest word',
   scale: 0.6119289407678828,
   iterations: 12,
   foundDuring: 'binary search'
 }
-fit wide-word_sh2x took (ms): 0.6307 {
+fit wide-word_sh2x took (ms): 0.282 {
   strategy: 'widest word',
   scale: 0.30577819338726675,
   iterations: 12,
   foundDuring: 'binary search'
 }
-fit wide-word_sh10x took (ms): 0.9174 {
+fit wide-word_sh10x took (ms): 0.2744 {
   strategy: 'widest word',
   scale: 0.061197634840835125,
   iterations: 13,
   foundDuring: 'binary search'
 }
-fit wide-word_sh0_1x took (ms): 0.2278 {
+fit wide-word_sh0_1x took (ms): 0.1476 {
   strategy: 'widest word',
   scale: 6.117785699291655,
   iterations: 11,
   foundDuring: 'binary search'
 }
-fit wide-word_sh0_5x took (ms): 0.4056 {
+fit wide-word_sh0_5x took (ms): 0.1482 {
   strategy: 'widest word',
   scale: 1.2235571398583311,
   iterations: 11,
   foundDuring: 'binary search'
 }
-fit no-fit took (ms): 0.7921 {
+fit no-fit took (ms): 0.1801 {
   strategy: 'no close fit',
   scale: 0.4828774943880693,
   iterations: 22,
   foundDuring: 'lower/upper delta check'
 }
 fit runs: 42
-total time ms: 17.969900000000003
-average time ms: 0.42785476190476196
+total time ms: 10.4509
+average time ms: 0.2488309523809524

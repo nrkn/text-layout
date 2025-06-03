@@ -1,7 +1,7 @@
 import { GlobalFonts, createCanvas } from '@napi-rs/canvas'
 
 import {
-  Block, DrawRun, FitterOptions, MeasureRunAscent, MeasureRunWidth, TextRun,
+  Block, DrawRun, FitterOptions, MeasureRunAscent, MeasureRunBounds, MeasureRunWidth, TextRun,
   WrappedBlock
 } from '../types.js'
 
@@ -137,6 +137,8 @@ const start = async (generateOutput = false) => {
   }
 
   const measure: MeasureRunWidth = run => getMetrics(run).width
+
+  const measureBounds: MeasureRunBounds = getMetrics
 
   const measureAscent: MeasureRunAscent = run =>
     getMetrics(run).actualBoundingBoxAscent

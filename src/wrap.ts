@@ -1,4 +1,4 @@
-import { runsToLines } from './lines.js'
+import { opticalLineAscent, runsToLines } from './lines.js'
 import { Block, HardWrapper, Line, SoftWrapper, WrappedBlock } from './types.js'
 
 // wrap runs into a block using hard coded breaks eg \n within the text runs
@@ -60,7 +60,7 @@ export const softWrapper: SoftWrapper = maxWidth =>
 
           continue
         }
-        
+
         push()
 
         currentLine = {

@@ -99,6 +99,7 @@ const start = async (generateOutput = false) => {
         return ctx.measureText(run.text);
     };
     const measure = run => getMetrics(run).width;
+    const measureBounds = getMetrics;
     const measureAscent = run => getMetrics(run).actualBoundingBoxAscent;
     const getAscent = (0, lines_js_1.lineAscent)(measureAscent);
     const getLeft = (run) => getMetrics(run).actualBoundingBoxLeft;

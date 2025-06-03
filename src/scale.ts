@@ -16,13 +16,29 @@ export const blockScaler = (scale: number) =>
 
 // scale a measured run by a factor  
 export const measuredRunScaler = (scale: number) =>
-  (run: MeasuredRun) => ({
-    ...run,
-    fontSize: run.fontSize * scale,
-    width: run.width * scale,
-    height: run.height * scale,
-    advanceX: run.advanceX * scale
-  })
+  (run: MeasuredRun) => {
+    run = {
+      ...run,
+      fontSize: run.fontSize * scale,
+      width: run.width * scale,
+      height: run.height * scale,
+      advanceX: run.advanceX * scale
+    }
+
+    if(
+      run.actualBoundingBoxAscent !== undefined &&
+      run.actualBoundingBoxDescent !== undefined && 
+      run.actualBoundingBoxLeft !== undefined &&
+      run.actualBoundingBoxRight !== undefined
+    ) {
+      run.actualBoundingBoxAscent *= scale
+      run.actualBoundingBoxDescent *= scale
+      run.actualBoundingBoxLeft *= scale
+      run.actualBoundingBoxRight *= scale
+    }
+
+    return run
+  }
 
 // scale a word by a factor  
 export const wordScaler = (scale: number) =>

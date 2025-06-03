@@ -19,6 +19,13 @@ export type Height = {
 
 export type Size = Width & Height
 
+// optical dimensions
+
+export type OpticalHorizontal = {
+  opticalLeft: number
+  opticalRight: number
+}
+
 // a Word will have an advanceX which is width + the width of a space
 export type AdvanceX = {
   advanceX: number
@@ -39,9 +46,13 @@ export type RunBounds = {
   actualBoundingBoxRight: number
 }
 
+export type TextMetricsLike = RunBounds & Width
+
 export type MeasureRunBounds = ( run: TextRun ) => RunBounds
 
-export type MeasuredRun = TextRun & Size & AdvanceX
+export type MeasureMetrics = ( run: TextRun ) => TextMetricsLike
+
+export type MeasuredRun = TextRun & Size & AdvanceX & Partial<RunBounds>
 
 export type Align = 'left' | 'center' | 'right'
 
@@ -50,12 +61,12 @@ export type Align = 'left' | 'center' | 'right'
 // etc
 export type Word = {
   runs: MeasuredRun[]
-} & Size & AdvanceX
+} & Size & AdvanceX & Partial<OpticalHorizontal>
 
 // the width is the sum of the runs, and the height is the tallest run
 export type Line = {
   words: Word[]
-} & Size
+} & Size & Partial<OpticalHorizontal>
 
 // the width is the widest line, and the height is the sum of the lines
 export type Block = {
@@ -72,7 +83,7 @@ export type WrappedBlock = Block & MaxWidth
 export type SoftWrapper = (maxWidth: number) =>
   (block: Block) => WrappedBlock
 
-export type HardWrapper = (measure: MeasureRunWidth) =>
+export type HardWrapper = (measure: MeasureRunWidth | MeasureMetrics) =>
   (runs: TextRun[]) => Block
 
 export type DrawRun = (
@@ -91,6 +102,7 @@ export type FitterOptions = {
   minBoundsDelta: number
   fitType: FitType
   wrapper: SoftWrapper
+  cropToMetrics?: boolean
 }
 
 export type FitStrategy = 'widest word' | 'height' | 'shrink' | 'no close fit'

@@ -22,6 +22,13 @@ const runsToWords = (measureText) => {
                 word.width += run.width;
                 word.advanceX += run.advanceX;
                 word.height = Math.max(word.height, run.height);
+                if (i === 0 && run.actualBoundingBoxLeft !== undefined) {
+                    word.opticalLeft = run.actualBoundingBoxLeft;
+                }
+                if (i === measuredRuns.length - 1 &&
+                    run.actualBoundingBoxRight !== undefined) {
+                    word.opticalRight = run.actualBoundingBoxRight;
+                }
             }
             words.push(word);
         }
