@@ -2,9 +2,8 @@ import { createCanvas, GlobalFonts } from '@napi-rs/canvas'
 import { DrawRun, MeasureMetrics, MeasureRunAscent, MeasureRunBounds, MeasureRunWidth, Size, TextRun, WrappedBlock } from '../types.js'
 import { lineAscent } from '../lines.js'
 import { drawBlock, drawRunAligned } from '../draw.js'
-import { text } from 'stream/consumers'
 import { writeFile } from 'fs/promises'
-import { hardWrapper, softWrapper } from '../wrap.js'
+import { hardWrapper } from '../wrap.js'
 import { fitter } from '../fit.js'
 
 const boldName = 'NotoBold'
@@ -117,7 +116,7 @@ const start = async () => {
 
     const png = canvas.toBuffer('image/png')
 
-    await writeFile(path, png)
+    await writeFile(path, png as any)
   }
 
   const drawHelper = async (

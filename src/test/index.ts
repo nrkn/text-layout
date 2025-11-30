@@ -212,7 +212,7 @@ const start = async (generateOutput = false) => {
 
     const png = canvas.toBuffer('image/png')
 
-    await writeFile(path, png)
+    await writeFile(path, png as any)
   }
 
   const drawHelper = async (
